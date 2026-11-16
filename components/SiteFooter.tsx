@@ -12,10 +12,10 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/donate", label: t.navDonate },
   ];
   return (
-    <footer className="mt-20 bg-night text-white/80">
+    <footer className="mt-20 bg-night text-paper/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[2fr_1fr]">
         <div>
-          <div className="flex items-center gap-2.5 text-white">
+          <div className="flex items-center gap-2.5 text-paper">
             <Logo />
             <span className="font-serif text-xl font-bold">{t.siteName}</span>
           </div>
@@ -31,7 +31,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
           <ul className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-1">
             {links.map((l) => (
               <li key={l.href}>
-                <Link href={`/${lang}${l.href}`} className="hover:text-white hover:underline">
+                <Link href={`/${lang}${l.href}`} className="hover:text-paper hover:underline">
                   {l.label}
                 </Link>
               </li>
@@ -39,7 +39,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
           </ul>
         </nav>
       </div>
-      <div className="border-t border-white/10 py-5 text-center text-sm text-white/55">
+      <div className="border-t border-paper/10 py-5 text-center text-sm text-paper/55">
         © {new Date().getFullYear()} {t.siteName} · {t.footerRights}
       </div>
     </footer>

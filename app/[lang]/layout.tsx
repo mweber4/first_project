@@ -47,7 +47,7 @@ export default async function LangLayout({
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <a
           href="#content"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-white focus:px-3 focus:py-2"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-card focus:px-3 focus:py-2"
         >
           {t.skipToContent}
         </a>

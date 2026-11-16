@@ -9,7 +9,7 @@ import { localeNames, locales, type Dict, type Lang } from "@/lib/i18n";
 import { normalize } from "@/lib/search";
 
 const field =
-  "w-full rounded-lg border border-line bg-white px-3 py-2.5 text-[15px] focus:border-gold focus:outline-none";
+  "w-full rounded-lg border border-line bg-card px-3 py-2.5 text-[15px] focus:border-gold focus:outline-none";
 
 export function SpeechesBrowser({
   speeches,
@@ -59,7 +59,7 @@ export function SpeechesBrowser({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className="rounded-xl border border-line bg-sand/60 p-4">
+      <div className="rounded-md border border-line bg-sand/60 p-4">
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-6">
           <label className="relative lg:col-span-2">
             <span className="sr-only">{t.filterSpeeches}</span>
@@ -110,10 +110,10 @@ export function SpeechesBrowser({
               type="button"
               onClick={() => setTopic(tp.id)}
               aria-pressed={topic === tp.id}
-              className={`rounded-full border px-3 py-1.5 text-sm transition-colors ${
+              className={`rounded-md border px-3 py-1.5 text-sm transition-colors ${
                 topic === tp.id
-                  ? "border-ink bg-ink font-semibold text-white"
-                  : "border-line bg-white hover:border-ink"
+                  ? "border-ink bg-ink font-semibold text-paper"
+                  : "border-line bg-card hover:border-ink"
               }`}
             >
               {tp.label} <span className="opacity-60">({tp.count})</span>
@@ -140,7 +140,7 @@ export function SpeechesBrowser({
           ))}
         </div>
       ) : (
-        <p className="mt-10 rounded-xl border border-dashed border-line py-14 text-center text-lg text-muted">
+        <p className="mt-10 rounded-md border border-dashed border-line py-14 text-center text-lg text-muted">
           {t.noMatches}
         </p>
       )}

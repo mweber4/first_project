@@ -25,7 +25,7 @@ export function LecturersBrowser({ lecturers, lang, t }: { lecturers: Lecturer[]
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={t.filterPlaceholder}
-          className="w-full rounded-lg border border-line bg-white py-2.5 ps-9 pe-3 focus:border-gold focus:outline-none"
+          className="w-full rounded-lg border border-line bg-card py-2.5 ps-9 pe-3 focus:border-gold focus:outline-none"
         />
       </label>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
