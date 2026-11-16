@@ -1,0 +1,12 @@
+[
+  { "id": "yesodos", "label": { "he": "יסודות השמירה", "yi": "יסודות פון שמירה", "en": "Foundations" } },
+  { "id": "technology", "label": { "he": "טכנולוגיה וסינון", "yi": "טעכנאָלאָגיע און פילטערס", "en": "Technology & filtering" } },
+  { "id": "street", "label": { "he": "ברחוב ובדרך", "yi": "אויף דער גאַס", "en": "In the street" } },
+  { "id": "chizuk", "label": { "he": "חיזוק והתעוררות", "yi": "חיזוק און התעוררות", "en": "Chizuk & inspiration" } },
+  { "id": "chinuch", "label": { "he": "חינוך הבנים", "yi": "חינוך הבנים", "en": "Chinuch" } },
+  { "id": "halacha", "label": { "he": "הלכה למעשה", "yi": "הלכה למעשה", "en": "Halacha" } },
+  { "id": "bayis", "label": { "he": "קדושת הבית", "yi": "קדושת הבית", "en": "The Jewish home" } },
+  { "id": "teshuva", "label": { "he": "תשובה ותיקון", "yi": "תשובה און תיקון", "en": "Teshuva" } },
+  { "id": "bachurim", "label": { "he": "לבחורי ישיבות", "yi": "פאַר בחורים", "en": "For bachurim" } },
+  { "id": "tefilla", "label": { "he": "תפילה וסייעתא דשמיא", "yi": "תפילה און סייעתא דשמיא", "en": "Tefilla & siyata dishmaya" } }
+]
