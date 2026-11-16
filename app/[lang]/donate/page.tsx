@@ -18,7 +18,7 @@ export default async function DonatePage({ params }: { params: Promise<{ lang: s
       <PageHeader title={t.donateTitle} intro={t.donateIntro} />
       <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 lg:grid-cols-[3fr_2fr]">
         <DonateForm t={t} donateUrl={donateUrl} />
-        <aside className="h-fit rounded-2xl bg-ink p-6 text-white">
+        <aside className="h-fit rounded-lg bg-ink p-6 text-paper">
           <h2 className="font-serif text-2xl font-bold text-gold-soft">{t.donateWhyTitle}</h2>
           <ul className="mt-4 space-y-3">
             {[t.donateWhy1, t.donateWhy2, t.donateWhy3].map((x) => (
@@ -28,9 +28,9 @@ export default async function DonatePage({ params }: { params: Promise<{ lang: s
               </li>
             ))}
           </ul>
-          <p lang="he" dir="rtl" className="mt-6 border-t border-white/15 pt-5 font-serif text-lg text-white/85">
+          <p lang="he" dir="rtl" className="mt-6 border-t border-paper/15 pt-5 font-serif text-lg text-paper/85">
             ״כָּל הַמְזַכֶּה אֶת הָרַבִּים — אֵין חֵטְא בָּא עַל יָדוֹ״
-            <span className="mt-1 block font-sans text-sm text-white/55">אבות ה, יח</span>
+            <span className="mt-1 block font-sans text-sm text-paper/55">אבות ה, יח</span>
           </p>
         </aside>
       </div>

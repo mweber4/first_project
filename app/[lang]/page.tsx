@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Heart, Search } from "lucide-react";
 import { LecturerCard, SectionTitle, SpeechCard, VideoTile } from "@/components/cards";
@@ -9,80 +10,76 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const speeches = getSpeeches(lang);
   const lecturers = getLecturers(lang);
   const topics = getTopics(lang);
-  const videos = getVideos(lang);
-  const inspiration = videos.filter((v) => v.category === "inspiration");
-
-  const stats = [
-    { n: speeches.length, label: t.statSpeeches },
-    { n: lecturers.length, label: t.statLecturers },
-    { n: topics.length, label: t.statTopics },
-    { n: inspiration.length, label: t.statVideos },
-  ];
+  const inspiration = getVideos(lang).filter((v) => v.category === "inspiration");
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-b from-ink to-night text-white">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, #fff 1px, transparent 0)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        <div className="relative mx-auto max-w-4xl px-4 py-16 text-center md:py-24">
-          <p lang="he" dir="rtl" className="font-serif text-2xl leading-relaxed text-gold-soft md:text-4xl">
-            ״{t.heroVerse}״
-          </p>
-          <p className="mt-2 text-sm text-white/60">{t.heroVerseSource}</p>
-          <h1 className="mt-8 font-serif text-3xl font-black md:text-5xl">{t.heroTitle}</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/80">{t.heroText}</p>
-
-          <form action={`/${lang}/search`} role="search" className="relative mx-auto mt-8 max-w-xl">
-            <Search
-              className="pointer-events-none absolute start-5 top-1/2 h-5 w-5 -translate-y-1/2 text-muted"
-              aria-hidden="true"
-            />
-            <input
-              type="search"
-              name="q"
-              placeholder={t.searchPlaceholder}
-              aria-label={t.searchTitle}
-              className="w-full rounded-full bg-white py-4 ps-13 pe-32 text-lg text-ink shadow-xl placeholder:text-muted focus:outline-none focus:ring-4 focus:ring-gold-soft/60"
-            />
-            <button
-              type="submit"
-              className="absolute end-2 top-1/2 -translate-y-1/2 rounded-full bg-ink px-6 py-2.5 font-semibold text-white hover:bg-gold"
+      <section className="border-b-2 border-ink">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-12 pt-10 md:grid-cols-[1.15fr_1fr] md:gap-14 md:pb-16 md:pt-14">
+          <div className="flex flex-col justify-center">
+            <p className="text-sm font-medium text-muted">{t.heroVerseSource}</p>
+            <p
+              lang="he"
+              dir="rtl"
+              className="mt-3 text-balance font-serif text-4xl font-black leading-[1.2] text-ink md:text-6xl"
             >
-              {t.searchButton}
-            </button>
-          </form>
+              {t.heroVerse}
+            </p>
 
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link href={`/${lang}/speeches`} className="rounded-full bg-gold-soft px-6 py-2.5 font-bold text-night hover:bg-white">
-              {t.browseSpeeches}
-            </Link>
-            <Link href={`/${lang}/lecturers`} className="rounded-full border border-white/40 px-6 py-2.5 font-semibold hover:bg-white/10">
-              {t.browseLecturers}
-            </Link>
+            <h1 className="mt-8 text-balance font-serif text-2xl font-bold md:text-3xl">
+              <span className="mark">{t.heroTitle}</span>
+            </h1>
+            <p className="mt-3 max-w-xl text-pretty text-lg leading-relaxed text-muted">{t.heroText}</p>
+
+            <form action={`/${lang}/search`} role="search" className="mt-8 flex max-w-xl border-2 border-ink bg-card">
+              <label htmlFor="hero-search" className="sr-only">
+                {t.searchTitle}
+              </label>
+              <span className="flex items-center ps-4 text-muted">
+                <Search className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <input
+                id="hero-search"
+                type="search"
+                name="q"
+                placeholder={t.searchPlaceholder}
+                className="min-w-0 flex-1 bg-transparent px-3 py-3.5 text-lg text-ink placeholder:text-muted focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="bg-ink px-6 font-semibold text-paper transition-colors hover:bg-gold"
+              >
+                {t.searchButton}
+              </button>
+            </form>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 font-semibold">
+              <Link href={`/${lang}/speeches`} className="text-gold underline decoration-2 underline-offset-4 hover:text-ink">
+                {t.browseSpeeches}
+              </Link>
+              <Link href={`/${lang}/lecturers`} className="text-gold underline decoration-2 underline-offset-4 hover:text-ink">
+                {t.browseLecturers}
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative min-h-72 overflow-hidden rounded-md md:min-h-0">
+            <Image
+              src="/images/beis-medrash-shelves.png"
+              alt=""
+              fill
+              priority
+              sizes="(min-width: 768px) 45vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
-
-        <dl className="relative mx-auto grid max-w-4xl grid-cols-2 gap-px border-t border-white/10 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="flex flex-col-reverse px-4 py-5 text-center">
-              <dt className="text-sm text-white/65">{s.label}</dt>
-              <dd className="font-serif text-3xl font-bold text-gold-soft">{s.n}</dd>
-            </div>
-          ))}
-        </dl>
       </section>
 
-      <div className="mx-auto max-w-6xl space-y-16 px-4 py-14">
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-14">
         <section>
           <SectionTitle title={t.latestSpeeches} href={`/${lang}/speeches`} linkLabel={t.viewAll} />
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-x-10 lg:grid-cols-2">
             {speeches.slice(0, 6).map((s) => (
               <SpeechCard key={s.slug} speech={s} lang={lang} t={t} />
             ))}
@@ -91,20 +88,24 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
         <section>
           <SectionTitle title={t.browseByTopic} />
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
-            {topics.map((tp) => (
-              <Link
-                key={tp.id}
-                href={`/${lang}/speeches?topic=${tp.id}`}
-                className="rounded-xl border border-line bg-white p-4 transition-colors hover:border-ink hover:bg-sand"
-              >
-                <span className="block font-serif text-lg font-bold leading-snug">{tp.label}</span>
-                <span className="mt-1 block text-sm text-muted">
-                  {tp.count} {t.speechesCount}
-                </span>
-              </Link>
+          <ul className="flex flex-wrap items-baseline gap-x-2 gap-y-3 font-serif text-2xl leading-snug md:text-3xl">
+            {topics.map((tp, i) => (
+              <li key={tp.id} className="flex items-baseline gap-2">
+                <Link
+                  href={`/${lang}/speeches?topic=${tp.id}`}
+                  className="font-bold decoration-gold-soft decoration-[0.35em] underline-offset-[-0.1em] hover:underline"
+                >
+                  {tp.label}
+                  <sup className="ms-1 font-sans text-sm font-medium text-muted">{tp.count}</sup>
+                </Link>
+                {i < topics.length - 1 && (
+                  <span aria-hidden="true" className="text-line">
+                    /
+                  </span>
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
         <section>
@@ -126,13 +127,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </section>
       </div>
 
-      <section className="bg-sand">
-        <div className="mx-auto flex max-w-4xl flex-col items-center px-4 py-14 text-center">
-          <h2 className="font-serif text-3xl font-bold">{t.donateBandTitle}</h2>
-          <p className="mt-3 text-lg text-muted">{t.donateBandText}</p>
+      <section className="-mb-20 border-b border-paper/10 bg-ink text-paper">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-12 md:flex-row md:items-center">
+          <div>
+            <h2 className="text-balance font-serif text-3xl font-bold">{t.donateBandTitle}</h2>
+            <p className="mt-2 max-w-xl text-lg leading-relaxed text-paper/75">{t.donateBandText}</p>
+          </div>
           <Link
             href={`/${lang}/donate`}
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-8 py-3.5 text-lg font-bold text-white hover:bg-gold"
+            className="inline-flex shrink-0 items-center gap-2 rounded-md bg-gold-soft px-7 py-3.5 text-lg font-bold text-night transition-colors hover:bg-paper"
           >
             <Heart className="h-5 w-5" aria-hidden="true" />
             {t.donateCta}
