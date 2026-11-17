@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Eye, Heart, Play, Search } from "lucide-react";
+import { Eye, Heart, PhoneCall, Play, Search } from "lucide-react";
 import { Avatar, LecturerCard, SectionTitle, SpeechCard, VideoTile } from "@/components/cards";
 import { getLecturers, getSpeeches, getTopics, getVideos } from "@/lib/data";
 import { resolveLang } from "@/lib/params";
@@ -123,6 +123,29 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <SpeechCard key={s.slug} speech={s} lang={lang} t={t} />
             ))}
           </div>
+        </section>
+
+        <section className="flex flex-col items-start justify-between gap-6 rounded-xl bg-tekhelet px-6 py-8 md:flex-row md:items-center md:px-10">
+          <div className="flex items-start gap-5">
+            <span
+              aria-hidden="true"
+              className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full border border-ink/40 sm:flex"
+            >
+              <PhoneCall className="h-7 w-7" />
+            </span>
+            <div>
+              <h2 className="text-balance font-display text-5xl font-bold uppercase leading-[0.9] md:text-6xl">
+                {t.callsHomeTitle}
+              </h2>
+              <p className="mt-2 max-w-xl text-pretty text-lg leading-relaxed text-ink/90">{t.callsHomeText}</p>
+            </div>
+          </div>
+          <Link
+            href={`/${lang}/calls`}
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-opacity hover:opacity-90"
+          >
+            {t.callsHomeCta}
+          </Link>
         </section>
 
         <section>
