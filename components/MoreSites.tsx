@@ -1,11 +1,12 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { Dict } from "@/lib/i18n";
 
 export function MoreSites({ t }: { t: Dict }) {
   const sites = [
-    { name: "Vayimaen", host: "vayimaen.org", href: "https://www.vayimaen.org/", text: t.siteVayimaen },
-    { name: "Gibor", host: "yiddishvideos.com/@gibor2", href: "https://yiddishvideos.com/@gibor2", text: t.siteGibor },
-    { name: "Guard Your Eyes", host: "guardyoureyes.com", href: "https://guardyoureyes.com/", text: t.siteGye },
+    { name: "Vayimaen", host: "vayimaen.org", href: "https://www.vayimaen.org/", logo: "/images/sites/vayimaen.svg", text: t.siteVayimaen },
+    { name: "Gibor", host: "yiddishvideos.com/@gibor2", href: "https://yiddishvideos.com/@gibor2", logo: "/images/sites/gibor.jpg", text: t.siteGibor },
+    { name: "Guard Your Eyes", host: "guardyoureyes.com", href: "https://guardyoureyes.com/", logo: "/images/sites/guardyoureyes.svg", text: t.siteGye },
   ];
 
   return (
@@ -23,9 +24,21 @@ export function MoreSites({ t }: { t: Dict }) {
               rel="noopener noreferrer"
               className="group flex h-full flex-col rounded-xl border border-line bg-card p-6 transition-colors hover:border-gold"
             >
-              <span className="flex items-start justify-between gap-3">
-                <span dir="ltr" className="text-2xl font-black tracking-tight">
-                  {s.name}
+              <span className="flex items-center justify-between gap-3">
+                <span className="flex items-center gap-4">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-ink p-2">
+                    <Image
+                      src={s.logo}
+                      alt={`${s.name} logo`}
+                      width={64}
+                      height={64}
+                      unoptimized
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                  <span dir="ltr" className="text-2xl font-black tracking-tight">
+                    {s.name}
+                  </span>
                 </span>
                 <ArrowUpRight
                   className="h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-gold"
