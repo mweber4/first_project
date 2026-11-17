@@ -112,7 +112,7 @@ export function SpeechesBrowser({
               aria-pressed={topic === tp.id}
               className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
                 topic === tp.id
-                  ? "border-gold bg-gold font-semibold text-paper"
+                  ? "border-gold bg-gold font-semibold text-night"
                   : "border-line bg-card hover:border-gold"
               }`}
             >
@@ -127,7 +127,7 @@ export function SpeechesBrowser({
           <strong className="text-ink">{results.length}</strong> {t.speechesCount}
         </p>
         {filtered && (
-          <button type="button" onClick={clear} className="text-sm font-semibold text-gold hover:underline">
+          <button type="button" onClick={clear} className="text-sm font-semibold text-tekhelet hover:underline">
             {t.clearFilters}
           </button>
         )}

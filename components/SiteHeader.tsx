@@ -49,7 +49,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
               href={`/${lang}${n.href}`}
               aria-current={isActive(n.href) ? "page" : undefined}
               className={`px-2 py-1 text-[13px] font-medium whitespace-nowrap uppercase tracking-[0.12em] transition-colors rtl:tracking-normal ${
-                isActive(n.href) ? "mark" : "text-ink/75 hover:text-gold"
+                isActive(n.href) ? "mark" : "text-ink/75 hover:text-tekhelet"
               }`}
             >
               {n.label}
@@ -69,7 +69,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
               onChange={(e) => setQ(e.target.value)}
               placeholder={t.searchPlaceholder}
               aria-label={t.searchButton}
-              className="w-full rounded-lg border border-line bg-card py-2 ps-9 pe-4 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
+              className="w-full rounded-lg border border-line bg-card py-2 ps-9 pe-4 text-sm text-ink placeholder:text-muted focus:border-ink focus:outline-none"
             />
           </form>
         </div>
@@ -102,7 +102,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
             aria-label={`${t.language}: ${localeNames[lang]}`}
             className="flex h-11 items-center gap-1.5 rounded-sm border border-gold/60 px-2.5 text-sm font-semibold text-ink transition-colors hover:border-gold"
           >
-            <Languages className="h-4 w-4 text-gold" aria-hidden="true" />
+            <Languages className="h-4 w-4 text-tekhelet" aria-hidden="true" />
             <span className="sm:hidden">{shortNames[lang]}</span>
             <span className="hidden sm:inline">{localeNames[lang]}</span>
             <ChevronDown
@@ -113,7 +113,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           {langOpen && (
             <ul
               id="lang-menu"
-              className="absolute end-0 top-full z-50 mt-2 w-44 rounded-sm border border-line bg-night py-1 shadow-2xl shadow-night/60"
+              className="absolute end-0 top-full z-50 mt-2 w-44 rounded-sm border border-line bg-card py-1 shadow-xl shadow-night/15"
             >
               {locales.map((l) => (
                 <li key={l}>
@@ -124,7 +124,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
                     onClick={() => setLangOpen(false)}
                     aria-current={l === lang ? "true" : undefined}
                     className={`flex h-12 items-center justify-between gap-3 px-4 text-base ${
-                      l === lang ? "font-semibold text-gold" : "text-ink hover:bg-sand"
+                      l === lang ? "font-semibold text-tekhelet" : "text-ink hover:bg-sand"
                     }`}
                   >
                     {localeNames[l]}

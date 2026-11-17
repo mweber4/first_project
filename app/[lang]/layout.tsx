@@ -46,7 +46,7 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0c1530",
+  themeColor: "#efeeea",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -65,7 +65,7 @@ export default async function LangLayout({
   const t = getDict(lang);
 
   return (
-    <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:dark]`}>
+    <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:light]`}>
       <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans antialiased xl:pb-0">
         <a
           href="#content"
@@ -74,7 +74,7 @@ export default async function LangLayout({
           {t.skipToContent}
         </a>
         {site.showDemoBanner && (
-          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs tracking-wide text-muted">
+          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs tracking-wide text-snow/70">
             {t.demoBanner}
           </p>
         )}

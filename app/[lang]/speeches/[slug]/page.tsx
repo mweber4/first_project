@@ -57,10 +57,10 @@ export default async function SpeechPage({ params }: { params: Params }) {
               <Clock className="h-4 w-4" aria-hidden="true" />
               {s.minutes} {t.minutes}
             </span>
-            <span className="rounded-lg bg-paper/15 px-2.5 py-0.5 text-sm">{s.languageLabel}</span>
+            <span className="rounded-lg bg-snow/15 px-2.5 py-0.5 text-sm">{s.languageLabel}</span>
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-lg bg-black/30 ring-1 ring-paper/10">
+          <div className="mt-8 overflow-hidden rounded-lg bg-black/30 ring-1 ring-snow/10">
             {s.type === "video" ? (
               <video src={s.src} controls playsInline preload="metadata" className="aspect-video w-full bg-black" />
             ) : (
@@ -98,7 +98,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
           <div>
             <h2 className="text-sm font-semibold text-muted">{t.aboutLecturer}</h2>
             <p className="font-serif text-xl font-bold">
-              <Link href={`/${lang}/lecturers/${lecturer.slug}`} className="hover:text-gold">
+              <Link href={`/${lang}/lecturers/${lecturer.slug}`} className="hover:text-tekhelet">
                 {lecturer.name}
               </Link>
             </p>

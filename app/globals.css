@@ -6,23 +6,23 @@
   --font-display: var(--font-karantina), var(--font-plex), Impact, sans-serif;
 }
 
-/* One deep navy stage, cream type. Red is the signature (the hero and a
-   hairline), yellow is the single action color. Surfaces are separated by
-   space and hairlines rather than boxes, and corners are nearly square. */
+/* Printed-notice palette: light paper, navy-black ink, the GYE red and
+   yellow. Red marks bands and links, yellow is only for actions. Night is
+   reserved for chrome (top bar, footer) and the media player. */
 @theme {
-  --color-paper: #0c1530;
-  --color-card: #121d3f;
-  --color-night: #080f24;
-  --color-tekhelet: #d42a2f;
-  --color-ink: #f7f2e8;
-  --color-ink-soft: #d6d0c3;
-  --color-snow: #f7f2e8;
-  --color-sand: #111b3a;
-  --color-line: #24315a;
+  --color-paper: #efeeea;
+  --color-card: #fbfaf8;
+  --color-night: #121a33;
+  --color-tekhelet: #c8232a;
+  --color-ink: #141a2e;
+  --color-ink-soft: #343b55;
+  --color-snow: #f7f5ef;
+  --color-sand: #e4e2dc;
+  --color-line: #d6d4cd;
   --color-gold: #ffc72c;
-  --color-gold-soft: #3b3320;
-  --color-pop: #ffd966;
-  --color-muted: #97a3c2;
+  --color-gold-soft: #fff0bf;
+  --color-pop: #b01e24;
+  --color-muted: #5b6177;
   --radius: 2px;
   --radius-sm: 2px;
   --radius-md: 2px;
@@ -50,22 +50,24 @@
   color: var(--color-night);
 }
 .btn-primary:hover {
-  background: var(--color-ink);
+  background: var(--color-night);
+  color: var(--color-snow);
 }
 .btn-outline {
-  border-color: color-mix(in srgb, var(--color-ink) 35%, transparent);
-  color: var(--color-ink);
+  border-color: currentColor;
+  color: inherit;
 }
 .btn-outline:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
+  background: var(--color-snow);
+  border-color: var(--color-snow);
+  color: var(--color-ink);
 }
 .btn-dark {
   background: var(--color-night);
-  color: var(--color-ink);
+  color: var(--color-snow);
 }
 .btn-dark:hover {
-  background: var(--color-paper);
+  background: var(--color-ink-soft);
 }
 
 .eyebrow {
@@ -119,7 +121,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-tekhelet);
   outline-offset: 2px;
 }
 
@@ -131,7 +133,7 @@ body {
 
 /* Active / emphasised text, e.g. current nav item. */
 .mark {
-  color: var(--color-gold);
+  color: var(--color-tekhelet);
 }
 
 /* Native <select> arrow sits on the correct side in both directions. */

@@ -33,7 +33,7 @@ export default async function CallsPage({ params }: { params: Promise<{ lang: st
         <ol className="grid gap-x-16 gap-y-8 md:grid-cols-3">
           {steps.map(([title, text], i) => (
             <li key={title} className="flex gap-5 border-t border-line pt-6">
-              <span aria-hidden="true" className="font-display text-5xl font-bold leading-none text-gold">
+              <span aria-hidden="true" className="font-display text-5xl font-bold leading-none text-tekhelet">
                 {i + 1}
               </span>
               <span>
@@ -53,7 +53,7 @@ export default async function CallsPage({ params }: { params: Promise<{ lang: st
                 <li key={key} className="flex items-center gap-4">
                   <span
                     aria-hidden="true"
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line text-lg font-semibold tabular-nums text-gold"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line text-lg font-semibold tabular-nums text-tekhelet"
                   >
                     {key}
                   </span>

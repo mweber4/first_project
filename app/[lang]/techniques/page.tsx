@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 function Entry({ item, n, t }: { item: Technique; n: number; t: Dict }) {
   return (
     <li className="grid gap-x-6 border-b border-line py-8 sm:grid-cols-[3.5rem_1fr]">
-      <span aria-hidden="true" className="font-display text-5xl font-bold leading-none text-gold">
+      <span aria-hidden="true" className="font-display text-5xl font-bold leading-none text-tekhelet">
         {String(n).padStart(2, "0")}
       </span>
       <div>
