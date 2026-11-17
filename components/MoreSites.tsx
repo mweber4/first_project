@@ -10,7 +10,7 @@ export function MoreSites({ t }: { t: Dict }) {
 
   return (
     <section aria-labelledby="more-sites" className="mx-auto max-w-6xl px-4 pb-8 pt-6">
-      <h2 id="more-sites" className="text-3xl font-black uppercase tracking-wide">
+      <h2 id="more-sites" className="font-display text-5xl font-bold uppercase leading-none">
         {t.moreSitesTitle}
       </h2>
       <p className="mt-2 max-w-2xl text-pretty leading-relaxed text-muted">{t.moreSitesIntro}</p>

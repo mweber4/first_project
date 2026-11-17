@@ -25,7 +25,7 @@ export function SectionTitle({
 }) {
   return (
     <div className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-3">
-      <h2 className="flex items-center gap-3 text-balance text-2xl font-black uppercase tracking-wide md:text-3xl">
+      <h2 className="flex items-center gap-3 text-balance font-display text-4xl font-bold uppercase leading-none md:text-5xl">
         <span aria-hidden="true" className="h-6 w-1.5 rounded-full bg-gold" />
         {title}
       </h2>
@@ -139,7 +139,7 @@ export function VideoTile({
 }) {
   const poster = (
     <span
-      className="relative flex aspect-video flex-col justify-between overflow-hidden rounded-lg border border-line bg-card p-4 transition-colors group-hover:border-gold"
+      className="relative flex aspect-video flex-col justify-between overflow-hidden rounded-lg border border-transparent bg-tekhelet p-4 transition-colors group-hover:border-gold"
       style={v.poster ? { backgroundImage: `url(${v.poster})`, backgroundSize: "cover" } : undefined}
     >
       <span className="flex items-center justify-between gap-2">
@@ -149,7 +149,7 @@ export function VideoTile({
         </span>
       </span>
       {!v.poster && (
-        <span className="line-clamp-2 text-start text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+        <span className="line-clamp-2 text-start font-display text-4xl font-bold uppercase leading-[0.9] text-ink md:text-5xl">
           {v.title}
         </span>
       )}

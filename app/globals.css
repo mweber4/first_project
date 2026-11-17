@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-heebo), system-ui, "Segoe UI", Arial, sans-serif;
-  --font-serif: var(--font-heebo), system-ui, "Segoe UI", Arial, sans-serif;
+  --font-sans: var(--font-plex), system-ui, "Segoe UI", Arial, sans-serif;
+  --font-serif: var(--font-plex), system-ui, "Segoe UI", Arial, sans-serif;
+  --font-display: var(--font-karantina), var(--font-plex), Impact, sans-serif;
 }
 
-/* Cinematic dark: black stage, warm off-white type, teal signal, tan labels. */
+/* Brand red + yellow on a deep navy stage: red is the signature surface,
+   yellow is the action color, cream type. */
 @theme {
-  --color-paper: #0a0a0b;
-  --color-card: #141416;
-  --color-night: #000000;
-  --color-ink: #f3f1ec;
-  --color-ink-soft: #cfccc4;
-  --color-snow: #f3f1ec;
-  --color-sand: #1b1b1e;
-  --color-line: #2a2a2e;
-  --color-gold: #2fc4b2;
-  --color-gold-soft: #10302c;
-  --color-pop: #d4b483;
-  --color-muted: #9b988f;
+  --color-paper: #101d3f;
+  --color-card: #18295a;
+  --color-night: #0a1430;
+  --color-tekhelet: #d42a2f;
+  --color-ink: #f7f2e8;
+  --color-ink-soft: #dcd5c6;
+  --color-snow: #f7f2e8;
+  --color-sand: #142451;
+  --color-line: #2c4078;
+  --color-gold: #ffc72c;
+  --color-gold-soft: #4a3d23;
+  --color-pop: #ffd966;
+  --color-muted: #a7b3d1;
   --radius: 0.75rem;
 }
 
@@ -84,7 +87,7 @@ body {
 
 /* Native <select> arrow sits on the correct side in both directions. */
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2359655d' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a7b3d1' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   appearance: none;
@@ -101,4 +104,11 @@ select {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* Wide letter-spacing breaks Hebrew letterforms; keep it for Latin only. */
+[dir="rtl"] .eyebrow,
+[dir="rtl"] .tracking-widest,
+[dir="rtl"] [class*="tracking-[0."] {
+  letter-spacing: 0.02em;
 }

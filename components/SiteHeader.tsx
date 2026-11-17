@@ -82,7 +82,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
               key={n.href}
               href={`/${lang}${n.href}`}
               aria-current={isActive(n.href) ? "page" : undefined}
-              className={`px-3 py-1 text-sm font-medium uppercase tracking-[0.16em] transition-colors ${
+              className={`px-3 py-1 text-sm font-medium whitespace-nowrap uppercase tracking-[0.16em] transition-colors rtl:tracking-normal ${
                 isActive(n.href) ? "mark" : "text-ink/75 hover:text-gold"
               }`}
             >
