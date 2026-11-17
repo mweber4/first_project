@@ -80,6 +80,16 @@ body {
   outline-offset: 2px;
 }
 
+/* Signature red/yellow band used under the header and atop the footer. */
+.brand-stripe {
+  height: 6px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-tekhelet) 0 14px,
+    var(--color-gold) 14px 28px
+  );
+}
+
 /* Active / emphasised text, e.g. current nav item. */
 .mark {
   color: var(--color-gold);

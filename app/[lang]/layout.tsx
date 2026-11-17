@@ -56,7 +56,7 @@ export default async function LangLayout({
           {t.skipToContent}
         </a>
         {site.showDemoBanner && (
-          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs font-medium tracking-wide text-pop">
+          <p className="bg-tekhelet px-4 py-1.5 text-center text-xs font-semibold tracking-wide text-ink">
             {t.demoBanner}
           </p>
         )}

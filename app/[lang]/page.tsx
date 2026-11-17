@@ -34,7 +34,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               </button>
             </form>
 
-            <nav aria-labelledby="hero-speakers" className="rounded-xl bg-card p-6">
+            <nav aria-labelledby="hero-speakers" className="rounded-xl border-t-4 border-gold bg-card p-6">
               <h2 id="hero-speakers" className="eyebrow">
                 {t.ourLecturers}
               </h2>
@@ -104,7 +104,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
 
             <p className="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-ink-soft">{t.heroText}</p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link href={`/${lang}/speeches`} className="eyebrow rounded-full border border-ink/30 px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold">
+              <Link href={`/${lang}/speeches`} className="eyebrow rounded-full bg-gold px-5 py-2.5 !text-paper transition-colors hover:bg-tekhelet hover:!text-ink">
                 {t.browseSpeeches}
               </Link>
               <Link href={`/${lang}/resources`} className="eyebrow rounded-full border border-ink/30 px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold">
@@ -128,14 +128,16 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <section>
           <SectionTitle title={t.browseByTopic} />
           <ul className="flex flex-wrap gap-3">
-            {topics.map((tp) => (
+            {topics.map((tp, i) => (
               <li key={tp.id}>
                 <Link
                   href={`/${lang}/speeches?topic=${tp.id}`}
-                  className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-medium text-ink transition-colors hover:border-gold hover:text-gold"
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 font-semibold transition-transform hover:-translate-y-0.5 ${
+                    i % 2 ? "bg-gold text-paper" : "bg-tekhelet text-ink"
+                  }`}
                 >
                   {tp.label}
-                  <span className="rounded-full bg-sand px-2 text-sm text-muted">{tp.count}</span>
+                  <span className="rounded-full bg-paper/25 px-2 text-sm">{tp.count}</span>
                 </Link>
               </li>
             ))}
@@ -154,8 +156,8 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <section>
           <SectionTitle title={t.inspirationTitle} href={`/${lang}/resources`} linkLabel={t.viewAll} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {inspiration.slice(0, 3).map((v) => (
-              <VideoTile key={v.slug} video={v} t={t} href={`/${lang}/resources?v=${v.slug}`} />
+            {inspiration.slice(0, 3).map((v, i) => (
+              <VideoTile key={v.slug} video={v} t={t} href={`/${lang}/resources?v=${v.slug}`} tone={i % 2 ? "yellow" : "red"} />
             ))}
           </div>
         </section>
