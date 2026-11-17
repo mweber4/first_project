@@ -56,12 +56,12 @@ export default async function LangLayout({
           {t.skipToContent}
         </a>
         {site.showDemoBanner && (
-          <p className="bg-tekhelet px-4 py-1.5 text-center text-xs font-semibold tracking-wide text-ink">
+          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs tracking-wide text-muted">
             {t.demoBanner}
           </p>
         )}
         <SiteHeader lang={lang} t={t} />
-        <main id="content" className="flex-1">
+        <main id="content" className="flex-1 pb-24">
           {children}
         </main>
         <SiteFooter lang={lang} t={t} />

@@ -18,12 +18,12 @@ export default async function DonatePage({ params }: { params: Promise<{ lang: s
       <PageHeader title={t.donateTitle} intro={t.donateIntro} />
       <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 lg:grid-cols-[3fr_2fr]">
         <DonateForm t={t} donateUrl={donateUrl} />
-        <aside className="h-fit rounded-2xl bg-night p-6 text-snow">
-          <h2 className="font-serif text-2xl font-bold text-gold-soft">{t.donateWhyTitle}</h2>
+        <aside className="h-fit border-t border-line pt-6 text-ink-soft">
+          <h2 className="text-2xl font-semibold tracking-tight text-ink">{t.donateWhyTitle}</h2>
           <ul className="mt-4 space-y-3">
             {[t.donateWhy1, t.donateWhy2, t.donateWhy3].map((x) => (
               <li key={x} className="flex gap-3">
-                <Check className="mt-1 h-5 w-5 shrink-0 text-gold-soft" aria-hidden="true" />
+                <Check className="mt-1 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
                 <span className="leading-relaxed">{x}</span>
               </li>
             ))}

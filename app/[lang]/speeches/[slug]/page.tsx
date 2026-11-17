@@ -34,7 +34,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
           <Link href={`/${lang}/speeches`} className="text-sm text-snow/70 hover:text-snow hover:underline">
             <span aria-hidden="true" className="inline-block ltr:rotate-180">→</span> {t.backToSpeeches}
           </Link>
-          {s.series && <p className="mt-6 text-sm font-semibold text-gold-soft">{s.series}</p>}
+          {s.series && <p className="mt-6 text-sm font-semibold text-gold">{s.series}</p>}
           <h1
             className={`font-serif text-3xl font-bold leading-tight md:text-4xl ${s.series ? "mt-1" : "mt-6"}`}
           >
@@ -46,7 +46,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
             </p>
           )}
           <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-snow/80">
-            <Link href={`/${lang}/lecturers/${lecturer.slug}`} className="font-semibold text-gold-soft hover:underline">
+            <Link href={`/${lang}/lecturers/${lecturer.slug}`} className="font-semibold text-gold hover:underline">
               {s.lecturerName}
             </Link>
             <span className="inline-flex items-center gap-1.5">

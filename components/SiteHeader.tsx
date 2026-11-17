@@ -42,9 +42,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           lang={l}
           aria-current={l === lang ? "true" : undefined}
           className={`rounded-lg px-2.5 py-1 transition-colors ${
-            l === lang
-              ? "bg-gold-soft font-semibold text-gold"
-              : "text-muted hover:bg-sand hover:text-ink"
+            l === lang ? "font-semibold text-ink" : "text-muted hover:text-ink"
           }`}
         >
           {localeNames[l]}
@@ -71,7 +69,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   );
 
   return (
-    <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur text-ink">
+    <header className="sticky top-0 z-40 border-t-2 border-tekhelet bg-paper/90 text-ink backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
         <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2.5">
           <Logo />
@@ -84,7 +82,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
               key={n.href}
               href={`/${lang}${n.href}`}
               aria-current={isActive(n.href) ? "page" : undefined}
-              className={`px-2 py-1 text-sm font-medium whitespace-nowrap uppercase tracking-[0.12em] transition-colors rtl:tracking-normal ${
+              className={`px-2 py-1 text-[13px] font-medium whitespace-nowrap uppercase tracking-[0.12em] transition-colors rtl:tracking-normal ${
                 isActive(n.href) ? "mark" : "text-ink/75 hover:text-gold"
               }`}
             >
@@ -98,7 +96,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
 
         <Link
           href={`/${lang}/donate`}
-          className="ms-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-sm font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink xl:ms-0"
+          className="btn btn-primary ms-auto shrink-0 !px-4 !py-2 !text-sm xl:ms-0"
         >
           <Heart className="h-4 w-4" aria-hidden="true" />
           {t.donateCta}

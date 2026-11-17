@@ -14,8 +14,8 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/donate", label: t.navDonate },
   ];
   return (
-    <footer className="mt-40 bg-tekhelet text-snow/90">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-12 pt-28 md:grid-cols-[2fr_1fr]">
+    <footer className="border-t border-line bg-night text-muted">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[2fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5 text-snow">
             <Logo />
@@ -29,7 +29,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
           )}
         </div>
         <nav aria-label={t.footerExplore}>
-          <h2 className="eyebrow !text-snow">{t.footerExplore}</h2>
+          <h2 className="eyebrow !text-ink">{t.footerExplore}</h2>
           <ul className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-1">
             {links.map((l) => (
               <li key={l.href}>
@@ -42,7 +42,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
         </nav>
       </div>
       <div aria-hidden="true" className="brand-stripe" />
-      <div className="bg-night py-5 text-center text-sm text-snow/70">
+      <div className="py-5 text-center text-xs text-muted">
         © {new Date().getFullYear()} {t.siteName} · {t.footerRights}
       </div>
     </footer>

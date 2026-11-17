@@ -6,29 +6,72 @@
   --font-display: var(--font-karantina), var(--font-plex), Impact, sans-serif;
 }
 
-/* Brand red + yellow on a deep navy stage: red is the signature surface,
-   yellow is the action color, cream type. */
+/* One deep navy stage, cream type. Red is the signature (the hero and a
+   hairline), yellow is the single action color. Surfaces are separated by
+   space and hairlines rather than boxes, and corners are nearly square. */
 @theme {
-  --color-paper: #101d3f;
-  --color-card: #18295a;
-  --color-night: #0a1430;
+  --color-paper: #0c1530;
+  --color-card: #121d3f;
+  --color-night: #080f24;
   --color-tekhelet: #d42a2f;
   --color-ink: #f7f2e8;
-  --color-ink-soft: #dcd5c6;
+  --color-ink-soft: #d6d0c3;
   --color-snow: #f7f2e8;
-  --color-sand: #142451;
-  --color-line: #2c4078;
+  --color-sand: #111b3a;
+  --color-line: #24315a;
   --color-gold: #ffc72c;
-  --color-gold-soft: #4a3d23;
+  --color-gold-soft: #3b3320;
   --color-pop: #ffd966;
-  --color-muted: #a7b3d1;
-  --radius: 0.75rem;
+  --color-muted: #97a3c2;
+  --radius: 2px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 3px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-primary {
+  background: var(--color-gold);
+  color: var(--color-night);
+}
+.btn-primary:hover {
+  background: var(--color-ink);
+}
+.btn-outline {
+  border-color: color-mix(in srgb, var(--color-ink) 35%, transparent);
+  color: var(--color-ink);
+}
+.btn-outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+.btn-dark {
+  background: var(--color-night);
+  color: var(--color-ink);
+}
+.btn-dark:hover {
+  background: var(--color-paper);
 }
 
 .eyebrow {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-pop);
 }
@@ -82,12 +125,8 @@ body {
 
 /* Signature red/yellow band used under the header and atop the footer. */
 .brand-stripe {
-  height: 6px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--color-tekhelet) 0 14px,
-    var(--color-gold) 14px 28px
-  );
+  height: 1px;
+  background: var(--color-line);
 }
 
 /* Active / emphasised text, e.g. current nav item. */
