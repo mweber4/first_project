@@ -122,3 +122,38 @@ select {
 [dir="rtl"] [class*="tracking-[0."] {
   letter-spacing: 0.02em;
 }
+
+/* Touch devices: no grey tap flash, no double-tap zoom delay, no rubber-band behind fixed bars. */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
+}
+a,
+button,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
+}
+@media (pointer: coarse) {
+  input,
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+}
+@media (display-mode: standalone) {
+  body {
+    user-select: none;
+  }
+  input,
+  textarea,
+  p,
+  h1,
+  h2,
+  h3 {
+    user-select: text;
+  }
+}
