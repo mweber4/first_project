@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Heart, Menu, Search, X } from "lucide-react";
+import { Heart, Languages, Menu, Search, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { localeNames, locales, type Dict, type Lang } from "@/lib/i18n";
 
@@ -115,6 +115,29 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+      <div className="mx-auto flex max-w-7xl items-center gap-2 pb-2 ps-[max(1rem,env(safe-area-inset-left))] pe-[max(1rem,env(safe-area-inset-right))] xl:hidden">
+        <Languages className="h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+        <div
+          role="group"
+          aria-label={t.language}
+          className="grid flex-1 grid-cols-3 gap-1 rounded-full border border-gold/50 bg-card p-1"
+        >
+          {locales.map((l) => (
+            <Link
+              key={l}
+              href={`/${l}${rest}`}
+              hrefLang={l}
+              lang={l}
+              aria-current={l === lang ? "true" : undefined}
+              className={`flex h-10 items-center justify-center rounded-full text-base font-semibold transition-colors ${
+                l === lang ? "bg-gold text-paper shadow-sm" : "text-ink hover:bg-sand active:bg-sand"
+              }`}
+            >
+              {localeNames[l]}
+            </Link>
+          ))}
+        </div>
+      </div>
       <div aria-hidden="true" className="brand-stripe" />
 
       {open && (
@@ -135,7 +158,6 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
               </Link>
             ))}
           </nav>
-          <div className="mt-3 border-t border-line pt-4">{langSwitch}</div>
         </div>
       )}
     </header>
