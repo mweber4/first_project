@@ -73,7 +73,7 @@ export function InstallPrompt({ t }: { t: Dict }) {
   return (
     <aside
       aria-label={t.installTitle}
-      className="fixed inset-x-3 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-30 mx-auto max-w-md rounded-sm border border-line bg-card p-4 shadow-xl shadow-night/20 xl:bottom-6 xl:end-6 xl:start-auto xl:mx-0"
+      className="fixed inset-x-3 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-30 mx-auto max-w-md rounded-sm border border-line bg-card p-4 shadow-xl shadow-night/20 lg:bottom-6 lg:end-6 lg:start-auto lg:mx-0"
     >
       <div className="flex items-start gap-3">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-night">

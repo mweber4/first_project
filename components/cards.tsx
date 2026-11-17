@@ -8,7 +8,7 @@ export function PageHeader({ title, intro }: { title: string; intro?: string }) 
   return (
     <div className="border-b border-line">
       <div className="mx-auto max-w-6xl px-4 pb-12 pt-16 md:pt-20">
-        <h1 className="max-w-4xl text-balance font-display text-6xl font-bold uppercase leading-[0.9] md:text-8xl">
+        <h1 className="max-w-4xl text-balance font-display text-4xl font-medium leading-tight md:text-6xl">
           {title}
         </h1>
         {intro && <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted">{intro}</p>}
@@ -28,11 +28,11 @@ export function SectionTitle({
 }) {
   return (
     <div className="mb-6 flex items-end justify-between gap-4">
-      <h2 className="text-balance font-display text-5xl font-bold uppercase leading-[0.85] md:text-6xl">{title}</h2>
+      <h2 className="text-balance font-display text-3xl font-medium leading-tight md:text-4xl">{title}</h2>
       {href && (
         <Link
           href={href}
-          className="flex h-11 shrink-0 items-center text-sm font-semibold text-tekhelet underline decoration-2 underline-offset-4 hover:text-ink"
+          className="flex h-11 shrink-0 items-center text-sm font-semibold text-tekhelet underline decoration-1 underline-offset-4 hover:text-ink"
         >
           {linkLabel}
         </Link>
@@ -187,7 +187,7 @@ export function VideoTile({
         </span>
       </span>
       {!v.poster && (
-        <span className="line-clamp-2 text-start font-display text-4xl font-bold uppercase leading-[0.9] md:text-5xl">
+        <span className="line-clamp-2 text-start font-display text-3xl font-medium leading-tight md:text-4xl">
           {v.title}
         </span>
       )}

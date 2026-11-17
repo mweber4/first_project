@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans_Hebrew, Karantina } from "next/font/google";
+import { IBM_Plex_Sans_Hebrew, Frank_Ruhl_Libre } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -15,10 +15,10 @@ const plex = IBM_Plex_Sans_Hebrew({
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-plex",
 });
-const karantina = Karantina({
+const frank = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
-  weight: ["400", "700"],
-  variable: "--font-karantina",
+  weight: ["400", "500", "600"],
+  variable: "--font-frank",
 });
 
 export const dynamicParams = false;
@@ -46,8 +46,8 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#efeeea",
-  colorScheme: "dark",
+  themeColor: "#f6f3ec",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -65,8 +65,8 @@ export default async function LangLayout({
   const t = getDict(lang);
 
   return (
-    <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:light]`}>
-      <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans antialiased xl:pb-0">
+    <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${frank.variable} bg-paper [color-scheme:light]`}>
+      <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans antialiased lg:pb-0">
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-card focus:px-3 focus:py-2"

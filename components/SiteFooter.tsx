@@ -29,7 +29,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
           )}
         </div>
         <nav aria-label={t.footerExplore}>
-          <h2 className="eyebrow !text-ink">{t.footerExplore}</h2>
+          <h2 className="eyebrow !text-snow/80">{t.footerExplore}</h2>
           <ul className="mt-3 grid grid-cols-2 gap-2 md:grid-cols-1">
             {links.map((l) => (
               <li key={l.href}>
@@ -42,7 +42,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
         </nav>
       </div>
       <div aria-hidden="true" className="brand-stripe" />
-      <div className="py-5 text-center text-xs text-muted">
+      <div className="py-5 text-center text-xs text-snow/60">
         © {new Date().getFullYear()} {t.siteName} · {t.footerRights}
       </div>
     </footer>

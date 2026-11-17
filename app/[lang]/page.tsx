@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Heart, PhoneCall } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, PhoneCall, Play } from "lucide-react";
 import { SectionTitle, SpeakerPortrait, SpeechCard, VideoTile } from "@/components/cards";
 import { getLecturers, getSpeeches, getTopics, getVideos } from "@/lib/data";
 import { resolveLang } from "@/lib/params";
@@ -10,57 +9,55 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const speeches = getSpeeches(lang);
   const lecturers = getLecturers(lang);
   const topics = getTopics(lang);
+  const featured = speeches.find((s) => s.slug === "bris-karati-leinai");
+  const Arrow = lang === "en" ? ArrowRight : ArrowLeft;
   const inspiration = getVideos(lang).filter((v) => v.category === "inspiration");
 
   return (
     <>
-      <section className="bg-tekhelet text-snow">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-12 pt-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16 lg:py-20">
+      <section className="border-b border-line">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-12 md:px-8 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20 lg:py-20">
           <div>
-            <p className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
-              <span lang="he" dir="rtl" className="text-lg leading-relaxed text-snow/90 md:text-xl">
-                {t.heroVerse}
-              </span>
-              <span className="whitespace-nowrap text-sm text-snow/70">{t.heroVerseSource}</span>
+            <p className="text-sm leading-relaxed text-muted">
+              <span lang="he" dir="rtl">{t.heroVerse}</span>
+              <span className="mt-1 block text-xs">{t.heroVerseSource}</span>
             </p>
-            <h1 className="mt-5 text-balance font-display text-6xl font-bold uppercase leading-[0.85] sm:text-8xl lg:text-9xl">
+            <h1 className="mt-6 max-w-2xl text-balance font-display text-5xl sm:text-6xl lg:text-7xl">
               {t.heroTitle}
             </h1>
-            <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-snow/90">{t.heroText}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href={`/${lang}/speeches`} className="btn btn-primary h-12">
-                {t.browseSpeeches}
+            <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted">{t.heroText}</p>
+            <div className="mt-8 flex flex-wrap items-center gap-6">
+              <Link href={`/${lang}/speeches`} className="btn btn-primary min-h-12">
+                {t.browseSpeeches}<Arrow className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link href={`/${lang}/resources`} className="btn btn-outline h-12">
+              <Link href={`/${lang}/resources`} className="py-3 text-sm text-ink-soft underline decoration-line underline-offset-8 hover:text-tekhelet">
                 {t.inspirationTitle}
               </Link>
             </div>
           </div>
 
-          <Link href={`/${lang}/lecturers`} className="group block" aria-label={t.ourLecturers}>
-            <span className="grid grid-cols-6 gap-1.5 lg:grid-cols-3 lg:gap-2">
-              {lecturers.slice(0, 6).map((l) => (
-                <Image
-                  key={l.slug}
-                  src={l.photo}
-                  alt=""
-                  width={200}
-                  height={250}
-                  className="aspect-[4/5] h-auto w-full rounded-sm object-cover"
-                />
-              ))}
-            </span>
-            <span className="mt-3 block text-sm font-semibold text-snow/90 underline decoration-snow/40 underline-offset-4 group-hover:decoration-snow">
-              {t.ourLecturers}
-            </span>
-          </Link>
+          {featured && (
+            <aside className="flex min-h-80 flex-col justify-between bg-sand px-6 py-7 sm:px-8 sm:py-8" aria-label={t.featured}>
+              <p className="eyebrow !text-muted">{t.featured}</p>
+              <p lang="he" dir="rtl" className="py-10 text-start font-serif text-6xl leading-tight text-tekhelet sm:text-7xl">ברית כרתי<br />לעיני</p>
+              <div className="flex items-center justify-between gap-4 border-t border-ink/15 pt-5">
+                <div className="min-w-0">
+                  <h2 className="text-pretty font-serif text-xl font-medium" dir="auto">{featured.title}</h2>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{featured.lecturerName} · {featured.languageLabel} · {featured.minutes} {t.minutes}</p>
+                </div>
+                <Link href={`/${lang}/speeches/${featured.slug}`} aria-label={`${t.listen}: ${featured.title}`} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/30 transition-colors hover:bg-ink hover:text-snow">
+                  <Play className="ms-0.5 h-4 w-4 fill-current" aria-hidden="true" />
+                </Link>
+              </div>
+            </aside>
+          )}
         </div>
       </section>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-14 md:gap-20 md:py-20">
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-14 md:gap-20 md:px-8 md:py-20">
         <section>
           <SectionTitle title={t.latestSpeeches} href={`/${lang}/speeches`} linkLabel={t.viewAll} />
-          <div className="grid border-t-2 border-ink md:gap-x-12 lg:grid-cols-2">
+          <div className="grid border-t border-ink md:gap-x-12 lg:grid-cols-2">
             {speeches.slice(0, 6).map((s) => (
               <SpeechCard key={s.slug} speech={s} lang={lang} t={t} />
             ))}
@@ -74,7 +71,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <li key={tp.id}>
                 <Link
                   href={`/${lang}/speeches?topic=${tp.id}`}
-                  className="inline-flex h-11 items-center gap-2 rounded-sm border border-ink/20 bg-card px-4 font-medium transition-colors hover:border-ink hover:bg-ink hover:text-snow"
+                  className="inline-flex min-h-11 items-center gap-3 border-b border-line px-3 text-sm font-medium transition-colors hover:border-ink hover:bg-ink hover:text-snow"
                 >
                   {tp.label}
                   <span className="text-sm tabular-nums opacity-60">{tp.count}</span>
@@ -85,15 +82,15 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </section>
       </div>
 
-      <section className="bg-night text-snow">
+      <section className="border-y border-line bg-sand text-ink">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:gap-12">
           <div className="flex items-start gap-4">
-            <PhoneCall className="mt-1 h-7 w-7 shrink-0 text-gold" aria-hidden="true" />
+            <PhoneCall className="mt-1 h-7 w-7 shrink-0 text-tekhelet" aria-hidden="true" />
             <div>
-              <h2 className="text-balance font-display text-4xl font-bold uppercase leading-[0.9] md:text-5xl">
+              <h2 className="text-balance font-display text-3xl font-medium leading-tight md:text-4xl">
                 {t.callsHomeTitle}
               </h2>
-              <p className="mt-3 max-w-xl text-pretty leading-relaxed text-snow/75">{t.callsHomeText}</p>
+              <p className="mt-3 max-w-xl text-pretty leading-relaxed text-muted">{t.callsHomeText}</p>
             </div>
           </div>
           <Link href={`/${lang}/calls`} className="btn btn-primary h-12 w-full shrink-0 sm:w-auto">
@@ -102,7 +99,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </div>
       </section>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-14 md:gap-20 md:py-20">
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-14 md:gap-20 md:px-8 md:py-20">
         <section>
           <SectionTitle title={t.ourLecturers} href={`/${lang}/lecturers`} linkLabel={t.viewAll} />
           <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
@@ -124,13 +121,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         </section>
       </div>
 
-      <section className="-mb-24 bg-gold text-night">
+      <section className="-mb-24 border-t border-line bg-sand text-ink">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-12 md:flex-row md:items-center md:py-16">
           <div>
-            <h2 className="text-balance font-display text-5xl font-bold uppercase leading-[0.85] md:text-6xl">
+            <h2 className="text-balance font-display text-3xl font-medium leading-tight md:text-4xl">
               {t.donateBandTitle}
             </h2>
-            <p className="mt-3 max-w-xl text-lg leading-relaxed text-night/80">{t.donateBandText}</p>
+            <p className="mt-3 max-w-xl text-lg leading-relaxed text-muted">{t.donateBandText}</p>
           </div>
           <Link href={`/${lang}/donate`} className="btn btn-dark h-12 w-full shrink-0 sm:w-auto">
             <Heart className="h-4 w-4" aria-hidden="true" />

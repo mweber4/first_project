@@ -33,7 +33,7 @@ export function MobileTabBar({ lang, t }: { lang: Lang; t: Dict }) {
   return (
     <>
       {more && (
-        <div className="fixed inset-0 z-40 xl:hidden">
+        <div className="fixed inset-0 z-40 lg:hidden">
           <button
             type="button"
             aria-label={t.close}
@@ -66,7 +66,7 @@ export function MobileTabBar({ lang, t }: { lang: Lang; t: Dict }) {
 
       <nav
         aria-label={t.menu}
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur xl:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden"
       >
         <ul className="mx-auto flex max-w-2xl">
           {tabs.map(({ href, label, Icon }) => {

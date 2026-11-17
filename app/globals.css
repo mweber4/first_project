@@ -2,27 +2,25 @@
 
 @theme inline {
   --font-sans: var(--font-plex), system-ui, "Segoe UI", Arial, sans-serif;
-  --font-serif: var(--font-plex), system-ui, "Segoe UI", Arial, sans-serif;
-  --font-display: var(--font-karantina), var(--font-plex), Impact, sans-serif;
+  --font-serif: var(--font-frank), Georgia, serif;
+  --font-display: var(--font-frank), Georgia, serif;
 }
 
-/* Printed-notice palette: light paper, navy-black ink, the GYE red and
-   yellow. Red marks bands and links, yellow is only for actions. Night is
-   reserved for chrome (top bar, footer) and the media player. */
+/* Warm paper, botanical ink and a restrained burgundy accent. */
 @theme {
-  --color-paper: #efeeea;
-  --color-card: #fbfaf8;
-  --color-night: #121a33;
-  --color-tekhelet: #c8232a;
-  --color-ink: #141a2e;
-  --color-ink-soft: #343b55;
-  --color-snow: #f7f5ef;
-  --color-sand: #e4e2dc;
-  --color-line: #d6d4cd;
-  --color-gold: #ffc72c;
-  --color-gold-soft: #fff0bf;
-  --color-pop: #b01e24;
-  --color-muted: #5b6177;
+  --color-paper: #f6f3ec;
+  --color-card: #fcfaf5;
+  --color-night: #202c29;
+  --color-tekhelet: #743d3d;
+  --color-ink: #202c29;
+  --color-ink-soft: #414d46;
+  --color-snow: #f6f3ec;
+  --color-sand: #e9e9de;
+  --color-line: #d8d8cd;
+  --color-gold: #c1a675;
+  --color-gold-soft: #eee4d0;
+  --color-pop: #743d3d;
+  --color-muted: #61675e;
   --radius: 2px;
   --radius-sm: 2px;
   --radius-md: 2px;
@@ -46,11 +44,11 @@
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 .btn-primary {
-  background: var(--color-gold);
-  color: var(--color-night);
+  background: var(--color-night);
+  color: var(--color-snow);
 }
 .btn-primary:hover {
-  background: var(--color-night);
+  background: var(--color-tekhelet);
   color: var(--color-snow);
 }
 .btn-outline {
@@ -125,7 +123,7 @@ body {
   outline-offset: 2px;
 }
 
-/* Signature red/yellow band used under the header and atop the footer. */
+/* Quiet rule separating the site chrome. */
 .brand-stripe {
   height: 1px;
   background: var(--color-line);
@@ -197,3 +195,6 @@ textarea,
     user-select: text;
   }
 }
+
+/* Editorial display type needs room for Hebrew vowels and longer translations. */
+.font-display { font-weight: 500; line-height: 1.15; text-transform: none; }

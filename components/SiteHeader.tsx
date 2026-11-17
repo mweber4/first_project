@@ -35,29 +35,14 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-t-2 border-b-line border-t-tekhelet bg-paper/90 pt-[env(safe-area-inset-top)] text-ink backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 ps-[max(1rem,env(safe-area-inset-left))] pe-[max(1rem,env(safe-area-inset-right))] sm:gap-4">
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 pt-[env(safe-area-inset-top)] text-ink backdrop-blur">
+      <div className="mx-auto flex h-20 max-w-7xl items-center gap-2 ps-[max(1rem,env(safe-area-inset-left))] pe-[max(1rem,env(safe-area-inset-right))] sm:gap-4">
         <Link href={`/${lang}`} className="flex min-w-0 shrink items-center gap-2.5">
           <Logo className="h-9 w-9 shrink-0" />
-          <span className="truncate text-lg font-bold leading-none sm:text-xl">{t.siteName}</span>
+          <span className="truncate font-serif text-2xl font-medium leading-none sm:text-3xl">{t.siteName}</span>
         </Link>
 
-        <nav className="ms-4 hidden items-center gap-1 xl:flex" aria-label={t.menu}>
-          {nav.map((n) => (
-            <Link
-              key={n.href}
-              href={`/${lang}${n.href}`}
-              aria-current={isActive(n.href) ? "page" : undefined}
-              className={`px-2 py-1 text-[13px] font-medium whitespace-nowrap uppercase tracking-[0.12em] transition-colors rtl:tracking-normal ${
-                isActive(n.href) ? "mark" : "text-ink/75 hover:text-tekhelet"
-              }`}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="ms-auto hidden min-w-0 max-w-48 flex-1 xl:block">
+        <div className="ms-auto hidden min-w-0 max-w-64 flex-1 lg:block">
           <form onSubmit={submit} role="search" className="relative w-full">
             <Search
               className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
@@ -75,7 +60,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
         </div>
 
         {/* Desktop: the three languages inline. */}
-        <div className="hidden items-center gap-1 text-sm xl:flex" role="group" aria-label={t.language}>
+        <div className="hidden items-center gap-1 text-sm 2xl:flex" role="group" aria-label={t.language}>
           {locales.map((l) => (
             <Link
               key={l}
@@ -93,14 +78,14 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
         </div>
 
         {/* Phones and tablets: one compact button in the header row. */}
-        <div className="relative ms-auto shrink-0 xl:hidden">
+        <div className="relative ms-auto shrink-0 2xl:hidden">
           <button
             type="button"
             onClick={() => setLangOpen((v) => !v)}
             aria-expanded={langOpen}
             aria-controls="lang-menu"
             aria-label={`${t.language}: ${localeNames[lang]}`}
-            className="flex h-11 items-center gap-1.5 rounded-sm border border-gold/60 px-2.5 text-sm font-semibold text-ink transition-colors hover:border-gold"
+            className="flex h-11 items-center gap-1.5 rounded-sm border border-line px-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink"
           >
             <Languages className="h-4 w-4 text-tekhelet" aria-hidden="true" />
             <span className="sm:hidden">{shortNames[lang]}</span>
@@ -138,12 +123,26 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
 
         <Link
           href={`/${lang}/donate`}
-          className="btn btn-primary h-11 shrink-0 !px-3.5 !py-0 !text-sm sm:!px-4 xl:h-auto xl:!py-2"
+          className="btn btn-primary h-11 shrink-0 !px-3.5 !py-0 !text-sm sm:!px-4 lg:h-auto lg:!py-2"
         >
           <Heart className="hidden h-4 w-4 sm:block" aria-hidden="true" />
           {t.donateCta}
         </Link>
       </div>
+        <nav className="mx-auto hidden max-w-7xl flex-wrap items-center gap-x-6 gap-y-1 px-4 pb-4 lg:flex" aria-label={t.menu}>
+          {nav.map((n) => (
+            <Link
+              key={n.href}
+              href={`/${lang}${n.href}`}
+              aria-current={isActive(n.href) ? "page" : undefined}
+              className={`py-1 text-sm font-medium whitespace-nowrap tracking-normal transition-colors rtl:tracking-normal ${
+                isActive(n.href) ? "mark" : "text-ink/75 hover:text-tekhelet"
+              }`}
+            >
+              {n.label}
+            </Link>
+          ))}
+        </nav>
     </header>
   );
 }
