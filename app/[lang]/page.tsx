@@ -60,7 +60,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <div className="order-1 flex flex-col lg:order-2">
             <Link
               href={featured ? `/${lang}/resources?v=${featured.slug}` : `/${lang}/speeches`}
-              className="group relative flex aspect-[16/10] flex-col justify-between overflow-hidden rounded-xl border border-line bg-card p-6 md:aspect-video md:p-10"
+              className="group relative flex aspect-[16/10] flex-col justify-between overflow-hidden rounded-xl bg-tekhelet p-6 md:aspect-video md:p-10"
             >
               <span className="flex items-center justify-between gap-4">
                 <span className="eyebrow">{t.featured}</span>
@@ -75,9 +75,9 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <span className="flex flex-col gap-4">
                 <span lang="he" dir="rtl" className="text-start text-base text-gold md:text-xl">
                   {t.heroVerse}
-                  <span className="ms-2 text-muted">({t.heroVerseSource})</span>
+                  <span className="ms-2 text-ink-soft">({t.heroVerseSource})</span>
                 </span>
-                <h1 className="max-w-4xl text-balance text-4xl font-black uppercase leading-[0.95] tracking-tight text-ink sm:text-5xl md:text-7xl">
+                <h1 className="max-w-4xl text-balance font-display text-6xl font-bold uppercase leading-[0.85] text-ink sm:text-7xl lg:text-8xl">
                   {t.heroTitle}
                 </h1>
                 {featured && (

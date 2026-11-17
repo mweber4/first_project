@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Frank_Ruhl_Libre, Heebo } from "next/font/google";
+import { IBM_Plex_Sans_Hebrew, Karantina } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -7,11 +7,15 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/data";
 import { dirOf, getDict, isLang, locales } from "@/lib/i18n";
 
-const heebo = Heebo({ subsets: ["hebrew", "latin"], variable: "--font-heebo" });
-const frank = Frank_Ruhl_Libre({
+const plex = IBM_Plex_Sans_Hebrew({
   subsets: ["hebrew", "latin"],
-  weight: ["500", "700", "900"],
-  variable: "--font-frank",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-plex",
+});
+const karantina = Karantina({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-karantina",
 });
 
 export const dynamicParams = false;
@@ -43,7 +47,7 @@ export default async function LangLayout({
   const t = getDict(lang);
 
   return (
-    <html lang={lang} dir={dirOf(lang)} className={`${heebo.variable} ${frank.variable} bg-paper [color-scheme:dark]`}>
+    <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:dark]`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <a
           href="#content"
