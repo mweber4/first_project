@@ -29,7 +29,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
 
   return (
     <>
-      <div className="bg-ink text-paper">
+      <div className="bg-night text-paper">
         <div className="mx-auto max-w-4xl px-4 py-10">
           <Link href={`/${lang}/speeches`} className="text-sm text-paper/70 hover:text-paper hover:underline">
             <span aria-hidden="true" className="inline-block ltr:rotate-180">→</span> {t.backToSpeeches}
@@ -57,10 +57,10 @@ export default async function SpeechPage({ params }: { params: Params }) {
               <Clock className="h-4 w-4" aria-hidden="true" />
               {s.minutes} {t.minutes}
             </span>
-            <span className="rounded-md bg-paper/15 px-2.5 py-0.5 text-sm">{s.languageLabel}</span>
+            <span className="rounded-lg bg-paper/15 px-2.5 py-0.5 text-sm">{s.languageLabel}</span>
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-md bg-black/30 ring-1 ring-paper/10">
+          <div className="mt-8 overflow-hidden rounded-lg bg-black/30 ring-1 ring-paper/10">
             {s.type === "video" ? (
               <video src={s.src} controls playsInline preload="metadata" className="aspect-video w-full bg-black" />
             ) : (
@@ -72,7 +72,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
           <a
             href={s.src}
             download
-            className="mt-4 inline-flex items-center gap-2 rounded-md border border-paper/30 px-4 py-2 text-sm hover:bg-paper/10"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-paper/30 px-4 py-2 text-sm hover:bg-paper/10"
           >
             <Download className="h-4 w-4" aria-hidden="true" />
             {t.download}
@@ -86,14 +86,14 @@ export default async function SpeechPage({ params }: { params: Params }) {
             <Link
               key={tp.id}
               href={`/${lang}/speeches?topic=${tp.id}`}
-              className="rounded-md border border-line bg-card px-3 py-1.5 text-sm hover:border-ink"
+              className="rounded-lg border border-line bg-card px-3 py-1.5 text-sm hover:border-gold"
             >
               {tp.label}
             </Link>
           ))}
         </div>
 
-        <section className="flex gap-5 rounded-md border border-line bg-card p-5">
+        <section className="flex gap-5 rounded-lg border border-line bg-card p-5">
           <Avatar initials={lecturer.initials} />
           <div>
             <h2 className="text-sm font-semibold text-muted">{t.aboutLecturer}</h2>

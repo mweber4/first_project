@@ -12,7 +12,7 @@ const input =
   "w-full rounded-lg border border-line bg-card px-3 py-2.5 focus:border-gold focus:outline-none";
 const pill = (on: boolean) =>
   `rounded-lg border-2 px-4 py-3 text-center font-semibold transition-colors ${
-    on ? "border-ink bg-ink text-paper" : "border-line bg-card hover:border-ink"
+    on ? "border-gold bg-gold text-paper" : "border-line bg-card hover:border-gold"
   }`;
 
 export function DonateForm({ t, donateUrl }: { t: Dict; donateUrl: string }) {
@@ -69,7 +69,7 @@ export function DonateForm({ t, donateUrl }: { t: Dict; donateUrl: string }) {
                   setPreset(PRESETS[c][2]);
                   setCustom("");
                 }}
-                className={`rounded-md px-3 py-1 ${currency === c ? "bg-sand font-bold" : "text-muted hover:bg-sand/60"}`}
+                className={`rounded-lg px-3 py-1 ${currency === c ? "bg-sand font-bold" : "text-muted hover:bg-sand/60"}`}
               >
                 {SYMBOL[c]} {c}
               </button>
@@ -139,7 +139,7 @@ export function DonateForm({ t, donateUrl }: { t: Dict; donateUrl: string }) {
 
       <button
         type="submit"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-md bg-gold-soft px-6 py-3.5 text-lg font-bold text-night transition-colors hover:bg-ink hover:text-paper"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-lg font-bold text-paper transition-colors hover:bg-ink hover:text-paper"
       >
         <Heart className="h-5 w-5" aria-hidden="true" />
         {t.continueToPayment}

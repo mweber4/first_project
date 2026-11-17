@@ -7,7 +7,7 @@ export function PageHeader({ title, intro }: { title: string; intro?: string }) 
   return (
     <div className="border-b border-line">
       <div className="mx-auto max-w-6xl px-4 pb-8 pt-12">
-        <h1 className="text-balance font-serif text-4xl font-black md:text-5xl">{title}</h1>
+        <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">{title}</h1>
         {intro && <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted">{intro}</p>}
       </div>
     </div>
@@ -24,9 +24,9 @@ export function SectionTitle({
   linkLabel?: string;
 }) {
   return (
-    <div className="mb-6 flex items-baseline justify-between gap-4 border-b border-ink pb-3">
+    <div className="mb-6 flex items-baseline justify-between gap-4 pb-1">
       <h2 className="text-balance font-serif text-2xl font-bold md:text-3xl">
-        <span className="mark">{title}</span>
+        {title}
       </h2>
       {href && (
         <Link href={href} className="shrink-0 text-sm font-semibold text-gold underline-offset-4 hover:underline">
@@ -41,7 +41,7 @@ export function Avatar({ initials, size = "md" }: { initials: string; size?: "md
   return (
     <span
       aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center rounded-md bg-ink font-serif font-bold text-gold-soft ${
+      className={`flex shrink-0 items-center justify-center rounded-full bg-gold-soft font-bold text-gold ${
         size === "lg" ? "h-24 w-24 text-3xl" : "h-14 w-14 text-lg"
       }`}
     >
@@ -54,7 +54,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
   const Icon = s.type === "video" ? VideoIcon : Headphones;
   return (
     <article className="group relative flex gap-4 border-b border-line py-5 transition-colors hover:bg-sand/60">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-ink text-ink transition-colors group-hover:bg-ink group-hover:text-gold-soft">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-soft text-gold transition-colors group-hover:bg-gold group-hover:text-paper">
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="min-w-0 flex-1">
@@ -85,7 +85,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
             <Clock className="h-3.5 w-3.5" aria-hidden="true" />
             {s.minutes} {t.minutes}
           </span>
-          <span className="rounded-sm bg-ink px-1.5 py-0.5 text-xs font-medium text-paper">
+          <span className="rounded-full bg-sand px-2 py-0.5 text-xs font-medium text-ink-soft">
             {s.languageLabel}
           </span>
           {s.topics.map((tp) => (
@@ -104,7 +104,7 @@ export function LecturerCard({ lecturer: l, lang, t }: { lecturer: Lecturer; lan
   return (
     <Link
       href={`/${lang}/lecturers/${l.slug}`}
-      className="group flex items-center gap-4 rounded-md border border-line bg-card p-4 transition-colors hover:border-ink"
+      className="group flex items-center gap-4 rounded-lg border border-line bg-card p-4 transition-colors hover:border-gold"
     >
       <Avatar initials={l.initials} />
       <span className="min-w-0">
@@ -138,7 +138,7 @@ export function VideoTile({
 }) {
   const poster = (
     <span
-      className="relative flex aspect-video items-center justify-center overflow-hidden rounded-md bg-ink-soft"
+      className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-ink-soft"
       style={v.poster ? { backgroundImage: `url(${v.poster})`, backgroundSize: "cover" } : undefined}
     >
       {!v.poster && (
@@ -146,7 +146,7 @@ export function VideoTile({
           {v.campaign ?? v.title}
         </span>
       )}
-      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold-soft text-night transition-transform group-hover:scale-110">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-gold transition-transform group-hover:scale-110">
         <Play className="ms-0.5 h-6 w-6 fill-current" aria-hidden="true" />
       </span>
       <span className="absolute end-2 top-2 rounded bg-black/55 px-1.5 py-0.5 text-xs text-paper">

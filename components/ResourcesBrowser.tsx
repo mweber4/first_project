@@ -84,7 +84,7 @@ export function ResourcesBrowser({ videos, t }: { videos: Video[]; t: Dict }) {
         onClose={() => setPlaying(null)}
         onClick={(e) => e.target === dialog.current && setPlaying(null)}
         aria-label={playing?.title}
-        className="m-auto w-[min(92vw,960px)] rounded-md bg-night p-0 text-paper backdrop:bg-black/75"
+        className="m-auto w-[min(92vw,960px)] rounded-lg bg-night p-0 text-paper backdrop:bg-black/75"
       >
         {playing && (
           <>
@@ -94,7 +94,7 @@ export function ResourcesBrowser({ videos, t }: { videos: Video[]; t: Dict }) {
                 type="button"
                 onClick={() => setPlaying(null)}
                 aria-label={t.close}
-                className="rounded-md p-1.5 hover:bg-paper/10"
+                className="rounded-lg p-1.5 hover:bg-paper/10"
               >
                 <X className="h-5 w-5" />
               </button>
