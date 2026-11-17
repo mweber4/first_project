@@ -6,21 +6,22 @@
   --font-display: var(--font-frank), Georgia, serif;
 }
 
-/* Warm paper, botanical ink and a restrained burgundy accent. */
+/* Light paper and navy ink with the Guard Your Eyes red and yellow.
+   Red marks the brand band, links and accents; yellow is for actions. */
 @theme {
-  --color-paper: #f6f3ec;
-  --color-card: #fcfaf5;
-  --color-night: #202c29;
-  --color-tekhelet: #743d3d;
-  --color-ink: #202c29;
-  --color-ink-soft: #414d46;
-  --color-snow: #f6f3ec;
-  --color-sand: #e9e9de;
-  --color-line: #d8d8cd;
-  --color-gold: #c1a675;
-  --color-gold-soft: #eee4d0;
-  --color-pop: #743d3d;
-  --color-muted: #61675e;
+  --color-paper: #f4f3ef;
+  --color-card: #fcfbf8;
+  --color-night: #141a2e;
+  --color-tekhelet: #c8232a;
+  --color-ink: #141a2e;
+  --color-ink-soft: #343b55;
+  --color-snow: #f7f5ef;
+  --color-sand: #e8e6e0;
+  --color-line: #d8d6cf;
+  --color-gold: #ffc72c;
+  --color-gold-soft: #fff0bf;
+  --color-pop: #b01e24;
+  --color-muted: #5b6177;
   --radius: 2px;
   --radius-sm: 2px;
   --radius-md: 2px;
@@ -44,11 +45,11 @@
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 .btn-primary {
-  background: var(--color-night);
-  color: var(--color-snow);
+  background: var(--color-gold);
+  color: var(--color-ink);
 }
 .btn-primary:hover {
-  background: var(--color-tekhelet);
+  background: var(--color-ink);
   color: var(--color-snow);
 }
 .btn-outline {
@@ -123,10 +124,10 @@ body {
   outline-offset: 2px;
 }
 
-/* Quiet rule separating the site chrome. */
+/* Red band separating the site chrome from the page. */
 .brand-stripe {
-  height: 1px;
-  background: var(--color-line);
+  height: 4px;
+  background: var(--color-tekhelet);
 }
 
 /* Active / emphasised text, e.g. current nav item. */

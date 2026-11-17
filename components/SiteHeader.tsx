@@ -3,17 +3,44 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Check, ChevronDown, Heart, Languages, Search } from "lucide-react";
+import { Heart, Languages, Search } from "lucide-react";
 import { Logo } from "./Logo";
 import { localeNames, locales, type Dict, type Lang } from "@/lib/i18n";
 
-/** Two-letter labels for the compact language switch on narrow screens. */
-const shortNames: Record<Lang, string> = { he: "עב", yi: "אי", en: "EN" };
+function LangSwitch({
+  lang,
+  rest,
+  label,
+  className = "",
+}: {
+  lang: Lang;
+  rest: string;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <div role="group" aria-label={label} className={`shrink-0 rounded-sm border border-ink/20 bg-card p-1 ${className}`}>
+      {locales.map((l) => (
+        <Link
+          key={l}
+          href={`/${l}${rest}`}
+          hrefLang={l}
+          lang={l}
+          aria-current={l === lang ? "true" : undefined}
+          className={`flex h-10 flex-1 items-center justify-center whitespace-nowrap rounded-sm px-3 text-sm font-semibold transition-colors ${
+            l === lang ? "bg-tekhelet text-snow" : "text-ink-soft hover:bg-sand hover:text-ink"
+          }`}
+        >
+          {localeNames[l]}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [langOpen, setLangOpen] = useState(false);
   const [q, setQ] = useState("");
 
   const rest = pathname.replace(/^\/[^/]+/, "");
@@ -59,67 +86,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           </form>
         </div>
 
-        {/* Desktop: the three languages inline. */}
-        <div className="hidden items-center gap-1 text-sm 2xl:flex" role="group" aria-label={t.language}>
-          {locales.map((l) => (
-            <Link
-              key={l}
-              href={`/${l}${rest}`}
-              hrefLang={l}
-              lang={l}
-              aria-current={l === lang ? "true" : undefined}
-              className={`px-2.5 py-1 transition-colors ${
-                l === lang ? "font-semibold text-ink" : "text-muted hover:text-ink"
-              }`}
-            >
-              {localeNames[l]}
-            </Link>
-          ))}
-        </div>
-
-        {/* Phones and tablets: one compact button in the header row. */}
-        <div className="relative ms-auto shrink-0 2xl:hidden">
-          <button
-            type="button"
-            onClick={() => setLangOpen((v) => !v)}
-            aria-expanded={langOpen}
-            aria-controls="lang-menu"
-            aria-label={`${t.language}: ${localeNames[lang]}`}
-            className="flex h-11 items-center gap-1.5 rounded-sm border border-line px-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink"
-          >
-            <Languages className="h-4 w-4 text-tekhelet" aria-hidden="true" />
-            <span className="sm:hidden">{shortNames[lang]}</span>
-            <span className="hidden sm:inline">{localeNames[lang]}</span>
-            <ChevronDown
-              className={`hidden h-4 w-4 text-muted transition-transform sm:block ${langOpen ? "rotate-180" : ""}`}
-              aria-hidden="true"
-            />
-          </button>
-          {langOpen && (
-            <ul
-              id="lang-menu"
-              className="absolute end-0 top-full z-50 mt-2 w-44 rounded-sm border border-line bg-card py-1 shadow-xl shadow-night/15"
-            >
-              {locales.map((l) => (
-                <li key={l}>
-                  <Link
-                    href={`/${l}${rest}`}
-                    hrefLang={l}
-                    lang={l}
-                    onClick={() => setLangOpen(false)}
-                    aria-current={l === lang ? "true" : undefined}
-                    className={`flex h-12 items-center justify-between gap-3 px-4 text-base ${
-                      l === lang ? "font-semibold text-tekhelet" : "text-ink hover:bg-sand"
-                    }`}
-                  >
-                    {localeNames[l]}
-                    {l === lang && <Check className="h-4 w-4" aria-hidden="true" />}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        <LangSwitch lang={lang} rest={rest} label={t.language} className="ms-auto hidden sm:flex lg:ms-0" />
 
         <Link
           href={`/${lang}/donate`}
@@ -128,6 +95,10 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           <Heart className="hidden h-4 w-4 sm:block" aria-hidden="true" />
           {t.donateCta}
         </Link>
+      </div>
+      <div className="flex items-center gap-3 border-t border-line px-4 py-2 sm:hidden">
+        <Languages className="h-5 w-5 shrink-0 text-tekhelet" aria-hidden="true" />
+        <LangSwitch lang={lang} rest={rest} label={t.language} className="flex flex-1" />
       </div>
         <nav className="mx-auto hidden max-w-7xl flex-wrap items-center gap-x-6 gap-y-1 px-4 pb-4 lg:flex" aria-label={t.menu}>
           {nav.map((n) => (
