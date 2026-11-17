@@ -24,8 +24,9 @@ export function SectionTitle({
   linkLabel?: string;
 }) {
   return (
-    <div className="mb-6 flex items-baseline justify-between gap-4 pb-1">
-      <h2 className="text-balance font-serif text-2xl font-bold md:text-3xl">
+    <div className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-3">
+      <h2 className="flex items-center gap-3 text-balance text-2xl font-black uppercase tracking-wide md:text-3xl">
+        <span aria-hidden="true" className="h-6 w-1.5 rounded-full bg-gold" />
         {title}
       </h2>
       {href && (
@@ -37,13 +38,13 @@ export function SectionTitle({
   );
 }
 
-export function Avatar({ initials, size = "md" }: { initials: string; size?: "md" | "lg" }) {
+const avatarSizes = { sm: "h-8 w-8 text-xs", md: "h-14 w-14 text-lg", lg: "h-24 w-24 text-3xl" };
+
+export function Avatar({ initials, size = "md" }: { initials: string; size?: keyof typeof avatarSizes }) {
   return (
     <span
       aria-hidden="true"
-      className={`flex shrink-0 items-center justify-center rounded-full bg-gold-soft font-bold text-gold ${
-        size === "lg" ? "h-24 w-24 text-3xl" : "h-14 w-14 text-lg"
-      }`}
+      className={`flex shrink-0 items-center justify-center rounded-full bg-gold-soft font-bold text-gold ring-1 ring-gold/30 ${avatarSizes[size]}`}
     >
       {initials}
     </span>
@@ -138,29 +139,30 @@ export function VideoTile({
 }) {
   const poster = (
     <span
-      className="relative flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-ink-soft"
+      className="relative flex aspect-video flex-col justify-between overflow-hidden rounded-lg border border-line bg-card p-4 transition-colors group-hover:border-gold"
       style={v.poster ? { backgroundImage: `url(${v.poster})`, backgroundSize: "cover" } : undefined}
     >
+      <span className="flex items-center justify-between gap-2">
+        <span className="eyebrow truncate">{v.campaign ?? v.year}</span>
+        <span className="shrink-0 rounded bg-night/70 px-1.5 py-0.5 text-xs text-snow">
+          {v.minutes} {t.minutes}
+        </span>
+      </span>
       {!v.poster && (
-        <span className="absolute inset-x-4 bottom-3 truncate text-start font-serif text-sm text-paper/70">
-          {v.campaign ?? v.title}
+        <span className="line-clamp-2 text-start text-2xl font-black uppercase leading-none tracking-tight text-ink md:text-3xl">
+          {v.title}
         </span>
       )}
-      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-paper text-gold transition-transform group-hover:scale-110">
-        <Play className="ms-0.5 h-6 w-6 fill-current" aria-hidden="true" />
-      </span>
-      <span className="absolute end-2 top-2 rounded bg-black/55 px-1.5 py-0.5 text-xs text-paper">
-        {v.minutes} {t.minutes}
+      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-paper transition-transform group-hover:scale-110">
+        <Play className="ms-0.5 h-5 w-5 fill-current" aria-hidden="true" />
       </span>
     </span>
   );
   const body = (
     <>
       {poster}
-      <span className="mt-3 block font-serif text-lg font-bold leading-snug decoration-gold-soft decoration-4 underline-offset-2 group-hover:underline">
-        {v.title}
-      </span>
-      <span className="mt-1 block text-sm text-muted">{v.description}</span>
+      {v.poster && <span className="mt-3 block text-lg font-bold leading-snug">{v.title}</span>}
+      <span className="mt-3 block text-sm leading-relaxed text-muted group-hover:text-ink-soft">{v.description}</span>
       <span className="mt-1 block text-xs font-medium text-gold">
         {v.campaign ? `${t.campaign}: ${v.campaign} · ` : ""}
         {v.year}

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Heart, Search } from "lucide-react";
-import { LecturerCard, SectionTitle, SpeechCard, VideoTile } from "@/components/cards";
+import { Eye, Heart, Play, Search } from "lucide-react";
+import { Avatar, LecturerCard, SectionTitle, SpeechCard, VideoTile } from "@/components/cards";
 import { getLecturers, getSpeeches, getTopics, getVideos } from "@/lib/data";
 import { resolveLang } from "@/lib/params";
 
@@ -10,58 +10,107 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
   const lecturers = getLecturers(lang);
   const topics = getTopics(lang);
   const inspiration = getVideos(lang).filter((v) => v.category === "inspiration");
+  const featured = inspiration[0];
 
   return (
     <>
-      <section className="border-b border-line bg-sand">
-        <div className="mx-auto flex max-w-3xl flex-col items-center px-4 pb-16 pt-16 text-center md:pb-20 md:pt-24">
-          <p lang="he" dir="rtl" className="text-pretty text-base font-medium text-gold md:text-lg">
-            {t.heroVerse}
-            <span className="ms-2 text-muted">({t.heroVerseSource})</span>
-          </p>
+      <section className="border-b border-line bg-night">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 lg:grid-cols-[280px_1fr] lg:py-14">
+          <aside className="order-2 flex flex-col gap-5 lg:order-1">
+            <form action={`/${lang}/search`} role="search" className="flex items-center gap-2 border-b border-ink/40 pb-2 focus-within:border-gold">
+              <label htmlFor="hero-search" className="sr-only">
+                {t.searchTitle}
+              </label>
+              <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+              <input
+                id="hero-search"
+                type="search"
+                name="q"
+                placeholder={t.searchPlaceholder}
+                className="min-w-0 flex-1 bg-transparent py-1.5 text-ink placeholder:text-muted focus:outline-none"
+              />
+              <button type="submit" className="eyebrow text-gold hover:text-ink">
+                {t.searchButton}
+              </button>
+            </form>
 
-          <h1 className="mt-5 text-balance text-4xl font-bold tracking-tight text-ink md:text-6xl">{t.heroTitle}</h1>
-          <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-muted">{t.heroText}</p>
+            <nav aria-labelledby="hero-speakers" className="rounded-xl bg-card p-6">
+              <h2 id="hero-speakers" className="eyebrow">
+                {t.ourLecturers}
+              </h2>
+              <ul className="mt-4 flex flex-col gap-1">
+                {lecturers.map((l) => (
+                  <li key={l.slug}>
+                    <Link
+                      href={`/${lang}/lecturers/${l.slug}`}
+                      className="flex items-center gap-3 rounded-md px-2 py-2 text-ink-soft transition-colors hover:bg-sand hover:text-ink"
+                    >
+                      <Avatar initials={l.initials} size="sm" />
+                      <span className="truncate">{l.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href={`/${lang}/lecturers`} className="mt-4 inline-block px-2 text-sm font-semibold text-gold hover:underline">
+                {t.viewAll}
+              </Link>
+            </nav>
+          </aside>
 
-          <form
-            action={`/${lang}/search`}
-            role="search"
-            className="mt-9 flex w-full max-w-2xl items-center rounded-full border border-line bg-card p-1.5 shadow-sm focus-within:border-gold"
-          >
-            <label htmlFor="hero-search" className="sr-only">
-              {t.searchTitle}
-            </label>
-            <span className="flex items-center ps-4 text-muted">
-              <Search className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <input
-              id="hero-search"
-              type="search"
-              name="q"
-              placeholder={t.searchPlaceholder}
-              className="min-w-0 flex-1 bg-transparent px-3 py-3 text-lg text-ink placeholder:text-muted focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-gold px-6 py-3 font-semibold text-paper transition-colors hover:bg-night"
-            >
-              {t.searchButton}
-            </button>
-          </form>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3 font-semibold">
+          <div className="order-1 flex flex-col lg:order-2">
             <Link
-              href={`/${lang}/speeches`}
-              className="rounded-full border border-line bg-card px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold"
+              href={featured ? `/${lang}/resources?v=${featured.slug}` : `/${lang}/speeches`}
+              className="group relative flex aspect-[16/10] flex-col justify-between overflow-hidden rounded-xl border border-line bg-card p-6 md:aspect-video md:p-10"
             >
-              {t.browseSpeeches}
+              <span className="flex items-center justify-between gap-4">
+                <span className="eyebrow">{t.featured}</span>
+                <span
+                  aria-hidden="true"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border border-ink/30 text-gold md:h-20 md:w-20"
+                >
+                  <Eye className="h-7 w-7 md:h-9 md:w-9" />
+                </span>
+              </span>
+
+              <span className="flex flex-col gap-4">
+                <span lang="he" dir="rtl" className="text-start text-base text-gold md:text-xl">
+                  {t.heroVerse}
+                  <span className="ms-2 text-muted">({t.heroVerseSource})</span>
+                </span>
+                <h1 className="max-w-4xl text-balance text-4xl font-black uppercase leading-[0.95] tracking-tight text-ink sm:text-5xl md:text-7xl">
+                  {t.heroTitle}
+                </h1>
+                {featured && (
+                  <span className="inline-flex w-fit items-center gap-3 rounded-full bg-gold py-2 pe-5 ps-2 font-bold text-paper transition-transform group-hover:scale-105">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-paper text-gold">
+                      <Play className="ms-0.5 h-4 w-4 fill-current" aria-hidden="true" />
+                    </span>
+                    <span className="truncate">{featured.title}</span>
+                    <span className="text-sm font-medium text-paper/70">
+                      {featured.minutes} {t.minutes}
+                    </span>
+                  </span>
+                )}
+              </span>
+
+              <span aria-hidden="true" className="flex items-center gap-3 text-xs text-muted">
+                <span>0:00</span>
+                <span className="h-1 flex-1 overflow-hidden rounded-full bg-line">
+                  <span className="block h-full w-1/12 bg-gold" />
+                </span>
+                <span>{featured ? `${featured.minutes}:00` : ""}</span>
+              </span>
             </Link>
-            <Link
-              href={`/${lang}/lecturers`}
-              className="rounded-full border border-line bg-card px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold"
-            >
-              {t.browseLecturers}
-            </Link>
+
+            <p className="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-ink-soft">{t.heroText}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href={`/${lang}/speeches`} className="eyebrow rounded-full border border-ink/30 px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold">
+                {t.browseSpeeches}
+              </Link>
+              <Link href={`/${lang}/resources`} className="eyebrow rounded-full border border-ink/30 px-5 py-2.5 text-ink transition-colors hover:border-gold hover:text-gold">
+                {t.inspirationTitle}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

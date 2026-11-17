@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { PageHeader } from "@/components/cards";
+import { MoreSites } from "@/components/MoreSites";
 import { ResourcesBrowser } from "@/components/ResourcesBrowser";
 import { getVideos } from "@/lib/data";
 import { getDict, isLang } from "@/lib/i18n";
@@ -18,6 +19,7 @@ export default async function ResourcesPage({ params }: { params: Promise<{ lang
       <Suspense>
         <ResourcesBrowser videos={getVideos(lang)} t={t} />
       </Suspense>
+      <MoreSites t={t} />
     </>
   );
 }

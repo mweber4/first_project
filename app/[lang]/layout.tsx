@@ -43,7 +43,7 @@ export default async function LangLayout({
   const t = getDict(lang);
 
   return (
-    <html lang={lang} dir={dirOf(lang)} className={`${heebo.variable} ${frank.variable}`}>
+    <html lang={lang} dir={dirOf(lang)} className={`${heebo.variable} ${frank.variable} bg-paper [color-scheme:dark]`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         <a
           href="#content"
@@ -52,7 +52,7 @@ export default async function LangLayout({
           {t.skipToContent}
         </a>
         {site.showDemoBanner && (
-          <p className="bg-gold-soft px-4 py-1.5 text-center text-sm font-medium text-night">
+          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs font-medium tracking-wide text-pop">
             {t.demoBanner}
           </p>
         )}

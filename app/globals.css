@@ -5,19 +5,57 @@
   --font-serif: var(--font-heebo), system-ui, "Segoe UI", Arial, sans-serif;
 }
 
-/* Clean, bright palette: white surfaces, a calm clear blue, deep navy text. */
+/* Cinematic dark: black stage, warm off-white type, teal signal, tan labels. */
 @theme {
-  --color-paper: #ffffff;
-  --color-card: #ffffff;
-  --color-night: #0b1f3a;
-  --color-ink: #0f1f33;
-  --color-ink-soft: #334a63;
-  --color-sand: #f3f7fb;
-  --color-line: #e2e8f0;
-  --color-gold: #1d63d8;
-  --color-gold-soft: #dbe8fb;
-  --color-muted: #5b6b7f;
+  --color-paper: #0a0a0b;
+  --color-card: #141416;
+  --color-night: #000000;
+  --color-ink: #f3f1ec;
+  --color-ink-soft: #cfccc4;
+  --color-snow: #f3f1ec;
+  --color-sand: #1b1b1e;
+  --color-line: #2a2a2e;
+  --color-gold: #2fc4b2;
+  --color-gold-soft: #10302c;
+  --color-pop: #d4b483;
+  --color-muted: #9b988f;
   --radius: 0.75rem;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-pop);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: eq 1.1s ease-in-out infinite;
 }
 
 html {
@@ -31,7 +69,7 @@ body {
 
 ::selection {
   background: var(--color-gold-soft);
-  color: var(--color-night);
+  color: var(--color-ink);
 }
 
 :focus-visible {
@@ -61,5 +99,6 @@ select {
   }
   * {
     transition: none !important;
+    animation: none !important;
   }
 }

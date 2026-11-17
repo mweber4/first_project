@@ -29,9 +29,9 @@ export default async function SpeechPage({ params }: { params: Params }) {
 
   return (
     <>
-      <div className="bg-night text-paper">
+      <div className="bg-night text-snow">
         <div className="mx-auto max-w-4xl px-4 py-10">
-          <Link href={`/${lang}/speeches`} className="text-sm text-paper/70 hover:text-paper hover:underline">
+          <Link href={`/${lang}/speeches`} className="text-sm text-snow/70 hover:text-snow hover:underline">
             <span aria-hidden="true" className="inline-block ltr:rotate-180">→</span> {t.backToSpeeches}
           </Link>
           {s.series && <p className="mt-6 text-sm font-semibold text-gold-soft">{s.series}</p>}
@@ -41,11 +41,11 @@ export default async function SpeechPage({ params }: { params: Params }) {
             <span dir="auto">{s.title}</span>
           </h1>
           {s.altTitle && (
-            <p className="mt-2 text-lg text-paper/70" dir="auto">
+            <p className="mt-2 text-lg text-snow/70" dir="auto">
               {s.altTitle}
             </p>
           )}
-          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-paper/80">
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-snow/80">
             <Link href={`/${lang}/lecturers/${lecturer.slug}`} className="font-semibold text-gold-soft hover:underline">
               {s.lecturerName}
             </Link>
@@ -72,7 +72,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
           <a
             href={s.src}
             download
-            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-paper/30 px-4 py-2 text-sm hover:bg-paper/10"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-snow/30 px-4 py-2 text-sm hover:bg-snow/10"
           >
             <Download className="h-4 w-4" aria-hidden="true" />
             {t.download}
