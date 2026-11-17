@@ -23,7 +23,7 @@ export default async function DonatePage({ params }: { params: Promise<{ lang: s
           <ul className="mt-4 space-y-3">
             {[t.donateWhy1, t.donateWhy2, t.donateWhy3].map((x) => (
               <li key={x} className="flex gap-3">
-                <Check className="mt-1 h-5 w-5 shrink-0 text-gold" aria-hidden="true" />
+                <Check className="mt-1 h-5 w-5 shrink-0 text-tekhelet" aria-hidden="true" />
                 <span className="leading-relaxed">{x}</span>
               </li>
             ))}

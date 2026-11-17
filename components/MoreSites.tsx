@@ -22,11 +22,11 @@ export function MoreSites({ t }: { t: Dict }) {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-full flex-col rounded-xl border border-line bg-card p-6 transition-colors hover:border-gold"
+              className="group flex h-full flex-col rounded-sm border border-line bg-card p-6 transition-colors hover:border-gold"
             >
               <span className="flex items-center justify-between gap-3">
                 <span className="flex items-center gap-4">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-ink p-2">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-sm border border-line bg-snow p-2">
                     <Image
                       src={s.logo}
                       alt={`${s.name} logo`}
@@ -41,13 +41,13 @@ export function MoreSites({ t }: { t: Dict }) {
                   </span>
                 </span>
                 <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-gold"
+                  className="h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-tekhelet"
                   aria-hidden="true"
                 />
               </span>
               <span className="mt-3 flex-1 text-pretty leading-relaxed text-ink-soft">{s.text}</span>
               <span className="mt-5 flex items-center justify-between gap-3 text-sm">
-                <span className="font-semibold text-gold">{t.visitSite}</span>
+                <span className="font-semibold text-tekhelet">{t.visitSite}</span>
                 <span dir="ltr" className="truncate text-muted">
                   {s.host}
                 </span>

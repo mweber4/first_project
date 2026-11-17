@@ -73,18 +73,18 @@ export function InstallPrompt({ t }: { t: Dict }) {
   return (
     <aside
       aria-label={t.installTitle}
-      className="fixed inset-x-3 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-30 mx-auto max-w-md rounded-sm border border-line bg-night p-4 shadow-2xl shadow-night/60 xl:bottom-6 xl:end-6 xl:start-auto xl:mx-0"
+      className="fixed inset-x-3 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-30 mx-auto max-w-md rounded-sm border border-line bg-card p-4 shadow-xl shadow-night/20 xl:bottom-6 xl:end-6 xl:start-auto xl:mx-0"
     >
       <div className="flex items-start gap-3">
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-paper">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-sm bg-night">
           <Logo className="h-8 w-8" />
         </span>
         <div className="min-w-0 flex-1">
           <p className="font-semibold text-ink">{t.installTitle}</p>
           {ios && !deferred ? (
             <p className="mt-1 text-sm leading-relaxed text-ink-soft">
-              {t.installIosStep1} <Share className="inline h-4 w-4 align-text-bottom text-gold" aria-label="Share" />{" "}
-              {t.installIosStep2} <SquarePlus className="inline h-4 w-4 align-text-bottom text-gold" aria-hidden="true" />{" "}
+              {t.installIosStep1} <Share className="inline h-4 w-4 align-text-bottom text-tekhelet" aria-label="Share" />{" "}
+              {t.installIosStep2} <SquarePlus className="inline h-4 w-4 align-text-bottom text-tekhelet" aria-hidden="true" />{" "}
               <strong className="text-ink">{t.installIosAction}</strong>
             </p>
           ) : (

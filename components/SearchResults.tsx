@@ -92,7 +92,7 @@ export function SearchResults({
                   aria-pressed={kind === k}
                   className={`rounded-lg border px-3 py-1 text-sm ${
                     kind === k
-                      ? "border-gold bg-gold font-semibold text-paper"
+                      ? "border-gold bg-gold font-semibold text-night"
                       : "border-line bg-card hover:border-gold"
                   }`}
                 >

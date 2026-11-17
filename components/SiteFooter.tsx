@@ -14,7 +14,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/donate", label: t.navDonate },
   ];
   return (
-    <footer className="border-t border-line bg-night text-muted">
+    <footer className="border-t border-line bg-night text-snow/60">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[2fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5 text-snow">

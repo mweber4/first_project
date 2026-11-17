@@ -27,7 +27,7 @@ export function MobileTabBar({ lang, t }: { lang: Lang; t: Dict }) {
   const moreActive = more || extra.some((x) => isActive(x.href));
   const tab = (active: boolean) =>
     `flex h-16 w-full flex-col items-center justify-center gap-1 text-xs font-medium transition-colors ${
-      active ? "text-gold" : "text-muted hover:text-ink"
+      active ? "text-tekhelet" : "text-muted hover:text-ink"
     }`;
 
   return (
@@ -52,7 +52,7 @@ export function MobileTabBar({ lang, t }: { lang: Lang; t: Dict }) {
                     href={`/${lang}${href}`}
                     onClick={() => setMore(false)}
                     aria-current={isActive(href) ? "page" : undefined}
-                    className={`flex h-14 items-center gap-4 text-lg ${isActive(href) ? "font-semibold text-gold" : "text-ink"}`}
+                    className={`flex h-14 items-center gap-4 text-lg ${isActive(href) ? "font-semibold text-tekhelet" : "text-ink"}`}
                   >
                     <Icon className="h-5 w-5 text-muted" aria-hidden="true" />
                     {label}
@@ -66,7 +66,7 @@ export function MobileTabBar({ lang, t }: { lang: Lang; t: Dict }) {
 
       <nav
         aria-label={t.menu}
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-night/95 pb-[env(safe-area-inset-bottom)] backdrop-blur xl:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur xl:hidden"
       >
         <ul className="mx-auto flex max-w-2xl">
           {tabs.map(({ href, label, Icon }) => {

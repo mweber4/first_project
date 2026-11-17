@@ -27,11 +27,14 @@ export function SectionTitle({
   linkLabel?: string;
 }) {
   return (
-    <div className="mb-8 flex items-baseline justify-between gap-4 border-t border-line pt-6">
-      <h2 className="text-balance text-2xl font-semibold tracking-tight md:text-3xl">{title}</h2>
+    <div className="mb-6 flex items-end justify-between gap-4">
+      <h2 className="text-balance font-display text-5xl font-bold uppercase leading-[0.85] md:text-6xl">{title}</h2>
       {href && (
-        <Link href={href} className="shrink-0 text-sm font-medium text-muted transition-colors hover:text-gold">
-          {linkLabel} <span aria-hidden="true" className="inline-block rtl:rotate-180">→</span>
+        <Link
+          href={href}
+          className="flex h-11 shrink-0 items-center text-sm font-semibold text-tekhelet underline decoration-2 underline-offset-4 hover:text-ink"
+        >
+          {linkLabel}
         </Link>
       )}
     </div>
@@ -74,13 +77,20 @@ export function Avatar({
 export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang; t: Dict }) {
   const Icon = s.type === "video" ? VideoIcon : Headphones;
   return (
-    <article className="group relative flex items-start gap-5 border-b border-line py-5">
+    <article className="group relative flex items-start gap-4 border-b border-line py-5">
+      <Image
+        src={`/images/speakers/${s.lecturerSlug}.png`}
+        alt=""
+        width={56}
+        height={56}
+        className="h-14 w-14 shrink-0 rounded-sm object-cover grayscale-[35%] transition group-hover:grayscale-0"
+      />
       <div className="min-w-0 flex-1">
         <h3 className="text-lg font-semibold leading-snug">
           <Link
             href={`/${lang}/speeches/${s.slug}`}
             dir="auto"
-            className="transition-colors after:absolute after:inset-0 group-hover:text-gold"
+            className="transition-colors after:absolute after:inset-0 group-hover:text-tekhelet"
           >
             {s.title}
           </Link>
@@ -93,7 +103,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
         <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
           <Link
             href={`/${lang}/lecturers/${s.lecturerSlug}`}
-            className="relative z-10 font-medium text-ink-soft hover:text-gold"
+            className="relative z-10 font-medium text-ink-soft hover:text-tekhelet"
           >
             {s.lecturerName}
           </Link>
@@ -110,7 +120,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
           <p className="mt-1 text-xs text-muted/80">{s.topics.map((tp) => tp.label).join(" · ")}</p>
         )}
       </div>
-      <Icon className="mt-1 h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-gold" aria-hidden="true" />
+      <Icon className="mt-1 h-5 w-5 shrink-0 text-muted transition-colors group-hover:text-tekhelet" aria-hidden="true" />
     </article>
   );
 }
@@ -120,10 +130,31 @@ export function LecturerCard({ lecturer: l, lang, t }: { lecturer: Lecturer; lan
     <Link href={`/${lang}/lecturers/${l.slug}`} className="group flex items-center gap-4 border-b border-line py-4">
       <Avatar initials={l.initials} photo={l.photo} />
       <span className="min-w-0 flex-1">
-        <span className="block text-lg font-semibold leading-tight transition-colors group-hover:text-gold">{l.name}</span>
+        <span className="block text-lg font-semibold leading-tight transition-colors group-hover:text-tekhelet">{l.name}</span>
         <span className="mt-1 block text-sm text-muted">
           {l.role} · {l.location} · {l.speechCount} {t.speechesCount}
         </span>
+      </span>
+    </Link>
+  );
+}
+
+/** Tall photo tile used where faces should lead, e.g. the home page. */
+export function SpeakerPortrait({ lecturer: l, lang, t }: { lecturer: Lecturer; lang: Lang; t: Dict }) {
+  return (
+    <Link href={`/${lang}/lecturers/${l.slug}`} className="group block">
+      <span className="block overflow-hidden rounded-sm bg-sand">
+        <Image
+          src={l.photo}
+          alt=""
+          width={320}
+          height={400}
+          className="aspect-[4/5] h-auto w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+        />
+      </span>
+      <span className="mt-3 block font-semibold leading-tight group-hover:text-tekhelet">{l.name}</span>
+      <span className="mt-0.5 block text-sm text-muted">
+        {l.speechCount} {t.speechesCount}
       </span>
     </Link>
   );
