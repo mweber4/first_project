@@ -1,4 +1,4 @@
-const VERSION = "gye-v1";
+const VERSION = "gye-v2";
 const PAGES = `${VERSION}-pages`;
 const ASSETS = `${VERSION}-assets`;
 const PRECACHE = ["/he", "/yi", "/en", "/icons/icon-192.png"];
@@ -18,10 +18,10 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-const isAsset = (url) =>
-  url.pathname.startsWith("/_next/static/") ||
-  url.pathname.startsWith("/images/") ||
-  url.pathname.startsWith("/icons/");
+// Build files carry a hash in their name, so a cached copy is always current.
+const isHashed = (url) => url.pathname.startsWith("/_next/static/");
+// Images keep their name when replaced: serve the cached copy, refresh it in the background.
+const isImage = (url) => url.pathname.startsWith("/images/") || url.pathname.startsWith("/icons/");
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
@@ -31,16 +31,21 @@ self.addEventListener("fetch", (event) => {
   // Media is streamed with range requests; let the browser handle it directly.
   if (url.pathname.startsWith("/media/")) return;
 
-  if (isAsset(url)) {
+  if (isHashed(url) || isImage(url)) {
     event.respondWith(
-      caches.match(request).then(
-        (hit) =>
-          hit ||
+      caches.match(request).then((hit) => {
+        const refresh = () =>
           fetch(request).then((res) => {
-            if (res.ok) caches.open(ASSETS).then((c) => c.put(request, res.clone()));
+            if (res.ok) {
+              const copy = res.clone();
+              caches.open(ASSETS).then((c) => c.put(request, copy));
+            }
             return res;
-          }),
-      ),
+          });
+        if (!hit) return refresh();
+        if (isImage(url)) event.waitUntil(refresh().catch(() => {}));
+        return hit;
+      }),
     );
     return;
   }

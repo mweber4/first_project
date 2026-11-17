@@ -23,8 +23,8 @@ const LENGTHS = [15, 30, 45, 0];
 const input =
   "w-full rounded-lg border border-line bg-card px-3 py-2.5 focus:border-gold focus:outline-none";
 const chip = (on: boolean) =>
-  `rounded-lg border-2 px-3 py-2.5 text-center font-semibold transition-colors ${
-    on ? "border-gold bg-gold text-paper" : "border-line bg-card hover:border-gold"
+  `rounded-sm border px-3 py-2.5 text-center font-medium transition-colors ${
+    on ? "border-gold bg-gold text-night" : "border-line text-ink-soft hover:border-gold"
   }`;
 
 export function CallScheduler({
@@ -74,11 +74,11 @@ export function CallScheduler({
       [t.callsPhone, <span key="p" dir="ltr">{`${code} ${phone}`}</span>],
     ] as const;
     return (
-      <div role="status" className="rounded-lg border border-line border-t-4 border-t-gold bg-card p-5 md:p-7">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-tekhelet text-ink">
+      <div role="status" className="rounded-sm border border-line bg-card p-6 md:p-10">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-night">
           <Check className="h-6 w-6" aria-hidden="true" />
         </span>
-        <h2 className="mt-4 font-display text-5xl font-bold uppercase leading-none">{t.callsDoneTitle}</h2>
+        <h2 className="mt-5 text-3xl font-semibold tracking-tight">{t.callsDoneTitle}</h2>
         <p className="mt-3 text-pretty leading-relaxed text-ink-soft">{t.callsDoneLead}</p>
         <dl className="mt-6 divide-y divide-line border-y border-line">
           {rows.map(([label, value]) => (
@@ -92,7 +92,7 @@ export function CallScheduler({
         <button
           type="button"
           onClick={() => setDone(false)}
-          className="mt-6 rounded-full border border-ink/30 px-5 py-2.5 font-semibold transition-colors hover:border-gold hover:text-gold"
+          className="btn btn-outline mt-8"
         >
           {t.callsEdit}
         </button>
@@ -101,8 +101,8 @@ export function CallScheduler({
   }
 
   return (
-    <form onSubmit={submit} noValidate className="rounded-lg border border-line border-t-4 border-t-gold bg-card p-5 md:p-7">
-      <h2 className="font-display text-5xl font-bold uppercase leading-none">{t.callsFormTitle}</h2>
+    <form onSubmit={submit} noValidate className="rounded-sm border border-line bg-card p-6 md:p-10">
+      <h2 className="text-2xl font-semibold tracking-tight">{t.callsFormTitle}</h2>
 
       <label className="mt-6 block">
         <span className="mb-2 block font-semibold">{t.callsFollow}</span>
@@ -217,7 +217,7 @@ export function CallScheduler({
 
       <button
         type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink"
+        className="btn btn-primary mt-8 w-full !py-3.5 !text-base"
       >
         <PhoneCall className="h-5 w-5" aria-hidden="true" />
         {t.callsSubmit}

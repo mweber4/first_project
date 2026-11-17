@@ -8,36 +8,23 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return isLang(lang) ? { title: getDict(lang).techniquesTitle } : {};
 }
 
-function Entry({ item, n, t, tone }: { item: Technique; n: number; t: Dict; tone: "red" | "yellow" }) {
+function Entry({ item, n, t }: { item: Technique; n: number; t: Dict }) {
   return (
-    <li
-      className={`flex flex-col rounded-lg border border-line border-t-4 bg-card p-6 ${
-        tone === "red" ? "border-t-tekhelet" : "border-t-gold"
-      }`}
-    >
-      <div className="flex items-start gap-4">
-        <span
-          aria-hidden="true"
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full font-display text-3xl font-bold leading-none ${
-            tone === "red" ? "bg-tekhelet text-ink" : "bg-gold text-paper"
-          }`}
-        >
-          {n}
-        </span>
-        <h3 className="text-balance pt-1.5 text-xl font-bold leading-snug">{item.title}</h3>
+    <li className="grid gap-x-6 border-b border-line py-8 sm:grid-cols-[3.5rem_1fr]">
+      <span aria-hidden="true" className="font-display text-5xl font-bold leading-none text-gold">
+        {String(n).padStart(2, "0")}
+      </span>
+      <div>
+        <h3 className="text-balance text-xl font-semibold leading-snug">{item.title}</h3>
+        <blockquote lang="he" dir="rtl" className="mt-3 text-start text-2xl font-medium leading-relaxed text-ink">
+          {item.quote}
+        </blockquote>
+        <p className="mt-3 max-w-prose text-pretty leading-relaxed text-muted">{item.text}</p>
+        <p className="mt-4 text-sm text-ink-soft">
+          <span className="eyebrow !text-muted">{t.sourceLabel}</span>
+          <span className="ms-3">{item.source}</span>
+        </p>
       </div>
-      <blockquote
-        lang="he"
-        dir="rtl"
-        className="mt-5 border-s-4 border-gold ps-4 text-start text-xl font-semibold leading-relaxed text-pop"
-      >
-        {item.quote}
-      </blockquote>
-      <p className="mt-4 flex-1 text-pretty leading-relaxed text-ink-soft">{item.text}</p>
-      <p className="mt-5 border-t border-line pt-3 text-sm text-muted">
-        <span className="font-semibold text-ink">{t.sourceLabel}: </span>
-        {item.source}
-      </p>
     </li>
   );
 }
@@ -46,20 +33,20 @@ export default async function TechniquesPage({ params }: { params: Promise<{ lan
   const { lang, t } = await resolveLang(params);
   const all = getTechniques(lang);
   const groups = [
-    { title: t.techniquesGroup, items: all.filter((x) => x.kind === "technique"), tone: "red" as const },
-    { title: t.segulosGroup, items: all.filter((x) => x.kind === "segula"), tone: "yellow" as const },
+    { title: t.techniquesGroup, items: all.filter((x) => x.kind === "technique") },
+    { title: t.segulosGroup, items: all.filter((x) => x.kind === "segula") },
   ];
 
   return (
     <>
       <PageHeader title={t.techniquesTitle} intro={t.techniquesIntro} />
-      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-4 py-12">
+      <div className="mx-auto flex max-w-6xl flex-col gap-20 px-4 py-16">
         {groups.map((g) => (
           <section key={g.title}>
             <SectionTitle title={g.title} />
-            <ol className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <ol className="-mt-8 grid gap-x-16 lg:grid-cols-2">
               {g.items.map((item, i) => (
-                <Entry key={item.id} item={item} n={i + 1} t={t} tone={g.tone} />
+                <Entry key={item.id} item={item} n={i + 1} t={t} />
               ))}
             </ol>
           </section>

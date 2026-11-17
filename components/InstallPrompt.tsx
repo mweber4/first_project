@@ -11,6 +11,8 @@ type BeforeInstallPromptEvent = Event & {
 };
 
 const DISMISS_KEY = "gye-install-dismissed";
+const VISITS_KEY = "gye-visits";
+const SESSION_KEY = "gye-session";
 
 export function InstallPrompt({ t }: { t: Dict }) {
   const [deferred, setDeferred] = useState<BeforeInstallPromptEvent | null>(null);
@@ -22,6 +24,15 @@ export function InstallPrompt({ t }: { t: Dict }) {
       window.matchMedia("(display-mode: standalone)").matches ||
       (navigator as Navigator & { standalone?: boolean }).standalone === true;
     if (standalone || localStorage.getItem(DISMISS_KEY)) return;
+
+    // Don't interrupt a first visit: offer the install from the second visit on.
+    let visits = Number(localStorage.getItem(VISITS_KEY) ?? 0);
+    if (!sessionStorage.getItem(SESSION_KEY)) {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      visits += 1;
+      localStorage.setItem(VISITS_KEY, String(visits));
+    }
+    if (visits < 2) return;
 
     const ua = navigator.userAgent;
     const isIos = /iPhone|iPad|iPod/.test(ua) || (ua.includes("Macintosh") && navigator.maxTouchPoints > 1);
@@ -62,14 +73,14 @@ export function InstallPrompt({ t }: { t: Dict }) {
   return (
     <aside
       aria-label={t.installTitle}
-      className="fixed inset-x-3 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-40 mx-auto max-w-md rounded-2xl border border-line bg-card p-4 shadow-2xl shadow-night/60 lg:bottom-6 lg:end-6 lg:start-auto lg:mx-0"
+      className="fixed inset-x-3 bottom-[calc(5rem+env(safe-area-inset-bottom))] z-30 mx-auto max-w-md rounded-sm border border-line bg-night p-4 shadow-2xl shadow-night/60 xl:bottom-6 xl:end-6 xl:start-auto xl:mx-0"
     >
       <div className="flex items-start gap-3">
         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-paper">
           <Logo className="h-8 w-8" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="font-bold text-ink">{t.installTitle}</p>
+          <p className="font-semibold text-ink">{t.installTitle}</p>
           {ios && !deferred ? (
             <p className="mt-1 text-sm leading-relaxed text-ink-soft">
               {t.installIosStep1} <Share className="inline h-4 w-4 align-text-bottom text-gold" aria-label="Share" />{" "}
@@ -93,9 +104,9 @@ export function InstallPrompt({ t }: { t: Dict }) {
         <button
           type="button"
           onClick={install}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-gold py-3 font-bold text-paper transition-colors hover:bg-pop"
+          className="btn btn-primary mt-3 w-full"
         >
-          <Download className="h-5 w-5" aria-hidden="true" />
+          <Download className="h-4 w-4" aria-hidden="true" />
           {t.installButton}
         </button>
       )}

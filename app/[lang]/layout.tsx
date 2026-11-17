@@ -46,7 +46,7 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: "#101d3f",
+  themeColor: "#0c1530",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -66,7 +66,7 @@ export default async function LangLayout({
 
   return (
     <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:dark]`}>
-      <body className="flex min-h-dvh flex-col pb-[calc(4.5rem+env(safe-area-inset-bottom))] font-sans antialiased lg:pb-0">
+      <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans antialiased xl:pb-0">
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-card focus:px-3 focus:py-2"
@@ -74,12 +74,12 @@ export default async function LangLayout({
           {t.skipToContent}
         </a>
         {site.showDemoBanner && (
-          <p className="bg-tekhelet px-4 py-1.5 text-center text-xs font-semibold tracking-wide text-ink">
+          <p className="border-b border-line bg-night px-4 py-1.5 text-center text-xs tracking-wide text-muted">
             {t.demoBanner}
           </p>
         )}
         <SiteHeader lang={lang} t={t} />
-        <main id="content" className="flex-1">
+        <main id="content" className="flex-1 pb-24">
           {children}
         </main>
         <SiteFooter lang={lang} t={t} />
