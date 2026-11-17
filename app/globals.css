@@ -2,25 +2,22 @@
 
 @theme inline {
   --font-sans: var(--font-heebo), system-ui, "Segoe UI", Arial, sans-serif;
-  --font-serif: var(--font-frank), "Times New Roman", serif;
+  --font-serif: var(--font-heebo), system-ui, "Segoe UI", Arial, sans-serif;
 }
 
-/*
-  Palette taken from a beis medrash shelf: green cloth sefer bindings,
-  grey-green page paper, and the yellow highlighter used in the margins.
-*/
+/* Clean, bright palette: white surfaces, a calm clear blue, deep navy text. */
 @theme {
-  --color-paper: #eff0ea;
-  --color-card: #f8f8f4;
-  --color-night: #0f1a15;
-  --color-ink: #17271f;
-  --color-ink-soft: #2f4a3d;
-  --color-sand: #e2e5da;
-  --color-line: #c9cdbf;
-  --color-gold: #2a6049;
-  --color-gold-soft: #f0d44c;
-  --color-muted: #59655d;
-  --radius: 0.375rem;
+  --color-paper: #ffffff;
+  --color-card: #ffffff;
+  --color-night: #0b1f3a;
+  --color-ink: #0f1f33;
+  --color-ink-soft: #334a63;
+  --color-sand: #f3f7fb;
+  --color-line: #e2e8f0;
+  --color-gold: #1d63d8;
+  --color-gold-soft: #dbe8fb;
+  --color-muted: #5b6b7f;
+  --radius: 0.75rem;
 }
 
 html {
@@ -42,21 +39,9 @@ body {
   outline-offset: 2px;
 }
 
-/* Highlighter stroke, drawn the way a pen marks a line in a sefer. */
+/* Active / emphasised text, e.g. current nav item. */
 .mark {
-  background-image: linear-gradient(
-    100deg,
-    transparent 0.2em,
-    var(--color-gold-soft) 0.2em,
-    var(--color-gold-soft) calc(100% - 0.3em),
-    transparent calc(100% - 0.3em)
-  );
-  background-repeat: no-repeat;
-  background-size: 100% 0.5em;
-  background-position: 0 88%;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding-inline: 0.15em;
+  color: var(--color-gold);
 }
 
 /* Native <select> arrow sits on the correct side in both directions. */

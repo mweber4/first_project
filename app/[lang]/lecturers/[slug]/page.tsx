@@ -43,7 +43,7 @@ export default async function LecturerPage({ params }: { params: Params }) {
                   {l.location}
                 </span>
                 {l.languages.map((x) => (
-                  <span key={x} className="rounded-md bg-card px-2.5 py-0.5 text-sm">
+                  <span key={x} className="rounded-lg bg-card px-2.5 py-0.5 text-sm">
                     {x}
                   </span>
                 ))}

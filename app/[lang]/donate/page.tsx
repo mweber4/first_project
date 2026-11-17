@@ -18,7 +18,7 @@ export default async function DonatePage({ params }: { params: Promise<{ lang: s
       <PageHeader title={t.donateTitle} intro={t.donateIntro} />
       <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 lg:grid-cols-[3fr_2fr]">
         <DonateForm t={t} donateUrl={donateUrl} />
-        <aside className="h-fit rounded-lg bg-ink p-6 text-paper">
+        <aside className="h-fit rounded-2xl bg-night p-6 text-paper">
           <h2 className="font-serif text-2xl font-bold text-gold-soft">{t.donateWhyTitle}</h2>
           <ul className="mt-4 space-y-3">
             {[t.donateWhy1, t.donateWhy2, t.donateWhy3].map((x) => (

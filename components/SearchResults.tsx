@@ -57,7 +57,7 @@ export function SearchResults({
           onChange={(e) => onChange(e.target.value)}
           placeholder={t.searchPlaceholder}
           aria-label={t.searchTitle}
-          className="w-full rounded-md border-2 border-line bg-card py-3.5 ps-12 pe-5 text-lg focus:border-gold focus:outline-none"
+          className="w-full rounded-lg border-2 border-line bg-card py-3.5 ps-12 pe-5 text-lg focus:border-gold focus:outline-none"
         />
       </form>
 
@@ -70,7 +70,7 @@ export function SearchResults({
               <Link
                 key={tp.href}
                 href={tp.href}
-                className="rounded-md border border-line bg-card px-3 py-1.5 text-sm hover:border-ink"
+                className="rounded-lg border border-line bg-card px-3 py-1.5 text-sm hover:border-gold"
               >
                 {tp.label}
               </Link>
@@ -90,10 +90,10 @@ export function SearchResults({
                   type="button"
                   onClick={() => setKind(k)}
                   aria-pressed={kind === k}
-                  className={`rounded-md border px-3 py-1 text-sm ${
+                  className={`rounded-lg border px-3 py-1 text-sm ${
                     kind === k
-                      ? "border-ink bg-ink font-semibold text-paper"
-                      : "border-line bg-card hover:border-ink"
+                      ? "border-gold bg-gold font-semibold text-paper"
+                      : "border-line bg-card hover:border-gold"
                   }`}
                 >
                   {k ? kindLabel[k] : t.all}{" "}
@@ -105,13 +105,13 @@ export function SearchResults({
           </div>
 
           {shown.length ? (
-            <ul className="mt-5 divide-y divide-line overflow-hidden rounded-md border border-line bg-card">
+            <ul className="mt-5 divide-y divide-line overflow-hidden rounded-lg border border-line bg-card">
               {shown.map((d) => {
                 const Icon = ICONS[d.kind];
                 return (
                   <li key={d.href}>
                     <Link href={d.href} className="flex items-center gap-4 p-4 hover:bg-sand/60">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-sand">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sand">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </span>
                       <span className="min-w-0 flex-1">
@@ -120,7 +120,7 @@ export function SearchResults({
                         </span>
                         <span className="block text-sm text-muted">{d.subtitle}</span>
                       </span>
-                      <span className="shrink-0 rounded-md bg-sand px-2 py-0.5 text-xs font-medium">
+                      <span className="shrink-0 rounded-lg bg-sand px-2 py-0.5 text-xs font-medium">
                         {kindLabel[d.kind]}
                       </span>
                     </Link>
@@ -129,7 +129,7 @@ export function SearchResults({
               })}
             </ul>
           ) : (
-            <div className="mt-10 rounded-md border border-dashed border-line py-14 text-center">
+            <div className="mt-10 rounded-lg border border-dashed border-line py-14 text-center">
               <p className="text-lg">
                 {t.searchEmpty} “{q}”
               </p>
