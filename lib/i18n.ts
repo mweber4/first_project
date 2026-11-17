@@ -143,6 +143,14 @@ const he = {
   donateWhy3: "אחזקת מאגר השיעורים והנגשתו לכל דורש",
   invalidAmount: "נא לבחור סכום לתרומה",
 
+  navTechniques: "עצות וסגולות",
+  techniquesTitle: "עצות וסגולות לשמירת העינים",
+  techniquesIntro: "דרכי התמודדות, עצות מעשיות וסגולות — כולן מן המקרא, מדברי חז״ל ומן הפוסקים, עם מראה מקום לכל אחת.",
+  techniquesGroup: "עצות מעשיות",
+  segulosGroup: "סגולות ותפילות",
+  sourceLabel: "מקור",
+  techniquesNote: "לשאלות למעשה יש לפנות לרב או למורה הוראה.",
+
   navCalls: "שיעור בטלפון",
   callsTitle: "שיעור בטלפון, בשעה שנוחה לכם",
   callsIntro:
@@ -322,6 +330,14 @@ const yi: Dict = {
   donateWhy3: "אויפהאַלטן דעם שיעורים־אוצר פאַר יעדן איינעם",
   invalidAmount: "ביטע קלויבט אויס אַ סכום",
 
+  navTechniques: "עצות און סגולות",
+  techniquesTitle: "עצות און סגולות פאַר שמירת עינים",
+  techniquesIntro: "וועגן זיך צו שטאַרקן, פּראַקטישע עצות און סגולות — אַלע פון תנ״ך, חז״ל און די פּוסקים, מיט אַ מראה מקום ביי יעדע.",
+  techniquesGroup: "פּראַקטישע עצות",
+  segulosGroup: "סגולות און תפילות",
+  sourceLabel: "מקור",
+  techniquesNote: "מיט שאלות למעשה זאָל מען זיך ווענדן צו אַ רב אָדער מורה הוראה.",
+
   navCalls: "שיעור אויפן טעלעפאָן",
   callsTitle: "אַ שיעור אויפן טעלעפאָן, ווען עס פּאַסט אייך",
   callsIntro:
@@ -498,6 +514,14 @@ const en: Dict = {
   donateWhy2: "Distributing chizuk videos and campaigns",
   donateWhy3: "Maintaining the speech library and keeping it free for all",
   invalidAmount: "Please choose a donation amount",
+
+  navTechniques: "Eitzos",
+  techniquesTitle: "Eitzos and segulos for shmiras einayim",
+  techniquesIntro: "Ways to stay strong, practical eitzos and segulos — all drawn from Tanach, Chazal and the poskim, each with its source.",
+  techniquesGroup: "Practical eitzos",
+  segulosGroup: "Segulos and tefillos",
+  sourceLabel: "Source",
+  techniquesNote: "For practical questions, speak to a rav.",
 
   navCalls: "By phone",
   callsTitle: "A shiur by phone, on your schedule",

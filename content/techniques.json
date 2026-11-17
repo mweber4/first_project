@@ -1,0 +1,145 @@
+[
+  {
+    "id": "another-way",
+    "kind": "technique",
+    "title": { "he": "לבחור בדרך אחרת", "en": "Take the other road" },
+    "text": {
+      "he": "הגמרא דורשת פסוק זה על מי שאינו מסתכל במקום שאינו ראוי, ומוסיפה: אם יש דרך אחרת — חייב ללכת בה. העצה הראשונה היא שלא להעמיד את עצמו בניסיון כלל.",
+      "en": "The Gemara applies this pasuk to one who does not look where he should not, and adds that if there is another route, he must take it. The first eitza is not to walk into the nisayon at all."
+    },
+    "quote": "ועוצם עיניו מראות ברע",
+    "source": { "he": "ישעיהו לג, טו; בבא בתרא נז ע״ב", "en": "Yeshayahu 33:15; Bava Basra 57b" }
+  },
+  {
+    "id": "covenant",
+    "kind": "technique",
+    "title": { "he": "לכרות ברית עם העינים", "en": "Make a covenant with your eyes" },
+    "text": {
+      "he": "איוב לא המתין לשעת הניסיון: הוא קיבל על עצמו מראש. החלטה ברורה שנקבעה קודם לכן עומדת לאדם ברגע שאין בו פנאי לחשוב.",
+      "en": "Iyov did not wait for the moment of nisayon; he committed himself in advance. A clear decision made beforehand stands by a person at the moment when there is no time to think."
+    },
+    "quote": "ברית כרתי לעיני ומה אתבונן על בתולה",
+    "source": { "he": "איוב לא, א", "en": "Iyov 31:1" }
+  },
+  {
+    "id": "fill-the-mind",
+    "kind": "technique",
+    "title": { "he": "למלא את הלב בתורה", "en": "Fill the mind with Torah" },
+    "text": {
+      "he": "הרמב״ם מורה לפנות את המחשבה לדברי תורה ולהרחיב את הדעת בחכמה, שכן ההרהור מוצא מקום רק בלב ריק.",
+      "en": "The Rambam directs a person to turn his thoughts to divrei Torah and broaden his mind with wisdom, because such thoughts take hold only in an empty heart."
+    },
+    "quote": "אין מחשבת עריות מתגברת אלא בלב פנוי מן החכמה",
+    "source": { "he": "רמב״ם, הלכות איסורי ביאה כב, כא", "en": "Rambam, Hilchos Issurei Biah 22:21" }
+  },
+  {
+    "id": "beis-medrash",
+    "kind": "technique",
+    "title": { "he": "למשוך אותו לבית המדרש", "en": "Drag it to the beis medrash" },
+    "text": {
+      "he": "תנא דבי רבי ישמעאל: כשהיצר פוגע באדם, אין מתווכחים עמו — קמים והולכים ללמוד. ובאותה סוגיה: בראתי יצר הרע ובראתי לו תורה תבלין.",
+      "en": "The school of Rabbi Yishmael taught: when the yetzer confronts a person, he does not argue with it; he gets up and goes to learn. The same sugya says that Hashem created the yetzer hara and created Torah as its remedy."
+    },
+    "quote": "אם פגע בך מנוול זה — משכהו לבית המדרש",
+    "source": { "he": "קידושין ל ע״ב; סוכה נב ע״ב", "en": "Kiddushin 30b; Sukkah 52b" }
+  },
+  {
+    "id": "three-steps",
+    "kind": "technique",
+    "title": { "he": "סדר ההתגברות של חז״ל", "en": "Chazal's order of battle" },
+    "text": {
+      "he": "הגמרא מונה מדרגות זו אחר זו: ירגיז יצר טוב על יצר הרע; לא נצחו — יעסוק בתורה; לא נצחו — יקרא קריאת שמע; לא נצחו — יזכור לו יום המיתה.",
+      "en": "The Gemara lists steps, one after another: stir up the yetzer tov against the yetzer hara; if that does not win, learn Torah; if not, say Krias Shema; if not, remember the day of death."
+    },
+    "quote": "לעולם ירגיז אדם יצר טוב על יצר הרע",
+    "source": { "he": "ברכות ה ע״א", "en": "Berachos 5a" }
+  },
+  {
+    "id": "eye-that-sees",
+    "kind": "technique",
+    "title": { "he": "לזכור מי רואה", "en": "Remember Who is watching" },
+    "text": {
+      "he": "רבי אומר: הסתכל בשלושה דברים ואין אתה בא לידי עבירה. מי שחי בידיעה שעין רואה אותו, שומר על עיניו שלו.",
+      "en": "Rebbi says: reflect on three things and you will not come to sin. One who lives knowing that an Eye sees him guards his own eyes."
+    },
+    "quote": "דע מה למעלה ממך: עין רואה ואוזן שומעת, וכל מעשיך בספר נכתבין",
+    "source": { "he": "אבות ב, א", "en": "Avos 2:1" }
+  },
+  {
+    "id": "fathers-image",
+    "kind": "technique",
+    "title": { "he": "דמות דיוקנו של אביו", "en": "His father's image" },
+    "text": {
+      "he": "בשעת ניסיונו של יוסף הצדיק נראתה לו דמות אביו, ובכוחה עמד. להעלות לנגד העינים את פני האב או הרב — זו עצה שמקורה ביוסף.",
+      "en": "At the moment of Yosef HaTzaddik's nisayon, the image of his father appeared to him, and through it he stood firm. Picturing the face of one's father or rebbi is an eitza that comes from Yosef."
+    },
+    "quote": "באתה דמות דיוקנו של אביו ונראתה לו בחלון",
+    "source": { "he": "סוטה לו ע״ב", "en": "Sotah 36b" }
+  },
+  {
+    "id": "thought-by-day",
+    "kind": "technique",
+    "title": { "he": "שמירת המחשבה ביום", "en": "Guard the day's thoughts" },
+    "text": {
+      "he": "מן הפסוק ״ונשמרת מכל דבר רע״ למדו חז״ל שהשמירה מתחילה במחשבה. מה שהעין קולטת ביום — הלב חוזר אליו בלילה.",
+      "en": "From the pasuk “v'nishmarta mikol davar ra” Chazal learn that guarding begins with thought. What the eye takes in by day, the heart returns to at night."
+    },
+    "quote": "שלא יהרהר אדם ביום ויבוא לידי טומאה בלילה",
+    "source": { "he": "דברים כג, י; עבודה זרה כ ע״ב", "en": "Devarim 23:10; Avodah Zarah 20b" }
+  },
+  {
+    "id": "look-ahead",
+    "kind": "technique",
+    "title": { "he": "להביט נכחו", "en": "Look straight ahead" },
+    "text": {
+      "he": "שלמה המלך מלמד הרגל פשוט להליכה ברחוב: העינים פונות אל הדרך שלפניו, ואינן משוטטות לצדדים.",
+      "en": "Shlomo HaMelech teaches a simple habit for the street: the eyes face the path ahead and do not wander to the sides."
+    },
+    "quote": "עיניך לנכח יביטו ועפעפיך יישרו נגדך",
+    "source": { "he": "משלי ד, כה", "en": "Mishlei 4:25" }
+  },
+  {
+    "id": "tzitzis",
+    "kind": "segula",
+    "title": { "he": "הסתכלות בציצית", "en": "Looking at the tzitzis" },
+    "text": {
+      "he": "התורה עצמה קושרת את ראיית הציצית אל ״ולא תתורו״. והגמרא מספרת על אדם שציציותיו עמדו לו בשעת ניסיון והצילוהו מן העבירה.",
+      "en": "The Torah itself ties seeing the tzitzis to “v'lo sasuru”. The Gemara tells of a man whose tzitzis confronted him at a moment of nisayon and saved him from sin."
+    },
+    "quote": "וראיתם אתו וזכרתם את כל מצות ה׳... ולא תתורו אחרי לבבכם ואחרי עיניכם",
+    "source": { "he": "במדבר טו, לט; מנחות מד ע״א", "en": "Bamidbar 15:39; Menachos 44a" }
+  },
+  {
+    "id": "haaver-einai",
+    "kind": "segula",
+    "title": { "he": "תפילת דוד המלך", "en": "Dovid HaMelech's tefilla" },
+    "text": {
+      "he": "דוד המלך לא סמך על כוחו; הוא ביקש. פסוק קצר זה הוא תפילה מפורשת על שמירת העינים, וראוי שיהא שגור בפה.",
+      "en": "Dovid HaMelech did not rely on his own strength; he asked. This short pasuk is an explicit tefilla for shmiras einayim, worth keeping on one's lips."
+    },
+    "quote": "העבר עיני מראות שוא, בדרכך חייני",
+    "source": { "he": "תהלים קיט, לז", "en": "Tehillim 119:37" }
+  },
+  {
+    "id": "daily-tefilla",
+    "kind": "segula",
+    "title": { "he": "תפילה בכל יום", "en": "A tefilla every day" },
+    "text": {
+      "he": "רבי חייא בר אשי היה רגיל לומר תפילה זו בכל עת שנפל על פניו. וכך אמרו חז״ל: יצרו של אדם מתגבר עליו בכל יום, ואלמלא הקדוש ברוך הוא עוזרו — אין יכול לו.",
+      "en": "Rabbi Chiya bar Ashi would say this tefilla whenever he fell on his face in prayer. Chazal say that a person's yetzer overpowers him every day, and without Hashem's help he could not withstand it."
+    },
+    "quote": "הרחמן יצילנו מיצר הרע",
+    "source": { "he": "קידושין פא ע״ב; קידושין ל ע״ב", "en": "Kiddushin 81b; Kiddushin 30b" }
+  },
+  {
+    "id": "ba-litaher",
+    "kind": "segula",
+    "title": { "he": "הבא ליטהר", "en": "One who comes to be purified" },
+    "text": {
+      "he": "הבטחת חז״ל למי שמתחיל: מן השמים מסייעים בידו. ועוד אמרו: אדם מקדש עצמו מעט — מקדשין אותו הרבה; מלמטה — מקדשין אותו מלמעלה.",
+      "en": "Chazal's promise to one who begins: Heaven helps him. They also said that a person who sanctifies himself a little is sanctified greatly; from below, and he is sanctified from Above."
+    },
+    "quote": "בא ליטהר — מסייעין אותו",
+    "source": { "he": "יומא לח ע״ב; יומא לט ע״א", "en": "Yoma 38b; Yoma 39a" }
+  }
+]

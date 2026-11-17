@@ -19,6 +19,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/speeches", label: t.navSpeeches },
     { href: "/lecturers", label: t.navLecturers },
     { href: "/resources", label: t.navResources },
+    { href: "/techniques", label: t.navTechniques },
     { href: "/calls", label: t.navCalls },
   ];
   const isActive = (href: string) =>
@@ -71,19 +72,19 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
 
   return (
     <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur text-ink">
-      <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
         <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2.5">
           <Logo />
           <span className="font-serif text-xl font-bold leading-none">{t.siteName}</span>
         </Link>
 
-        <nav className="ms-4 hidden items-center gap-1 lg:flex" aria-label={t.menu}>
+        <nav className="ms-4 hidden items-center gap-1 xl:flex" aria-label={t.menu}>
           {nav.map((n) => (
             <Link
               key={n.href}
               href={`/${lang}${n.href}`}
               aria-current={isActive(n.href) ? "page" : undefined}
-              className={`px-3 py-1 text-sm font-medium whitespace-nowrap uppercase tracking-[0.16em] transition-colors rtl:tracking-normal ${
+              className={`px-2 py-1 text-sm font-medium whitespace-nowrap uppercase tracking-[0.12em] transition-colors rtl:tracking-normal ${
                 isActive(n.href) ? "mark" : "text-ink/75 hover:text-gold"
               }`}
             >
@@ -92,12 +93,12 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           ))}
         </nav>
 
-        <div className="ms-auto hidden w-56 lg:block xl:w-64">{searchForm}</div>
-        <div className="hidden lg:block">{langSwitch}</div>
+        <div className="ms-auto hidden min-w-0 max-w-48 flex-1 xl:block">{searchForm}</div>
+        <div className="hidden xl:block">{langSwitch}</div>
 
         <Link
           href={`/${lang}/donate`}
-          className="ms-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-sm font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink lg:ms-0"
+          className="ms-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-sm font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink xl:ms-0"
         >
           <Heart className="h-4 w-4" aria-hidden="true" />
           {t.donateCta}
@@ -109,7 +110,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={t.menu}
-          className="rounded-lg p-2 hover:bg-sand lg:hidden"
+          className="rounded-lg p-2 hover:bg-sand xl:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -117,7 +118,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
       <div aria-hidden="true" className="brand-stripe" />
 
       {open && (
-        <div id="mobile-menu" className="border-t border-line bg-paper px-4 pb-5 pt-4 lg:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-paper px-4 pb-5 pt-4 xl:hidden">
           {searchForm}
           <nav className="mt-3 flex flex-col" aria-label={t.menu}>
             {nav.map((n) => (
