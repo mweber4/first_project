@@ -3,6 +3,7 @@ import speechesJson from "@/content/speeches.json";
 import topicsJson from "@/content/topics.json";
 import videosJson from "@/content/videos.json";
 import siteJson from "@/content/site.json";
+import techniquesJson from "@/content/techniques.json";
 import { formatDate } from "./format";
 import { getDict, localeNames, pick, type L10n, type Lang } from "./i18n";
 import { makeDoc, normalize, type SearchDoc } from "./search";
@@ -204,6 +205,34 @@ export function getVideos(lang: Lang): Video[] {
       poster: v.poster ?? null,
     }))
     .sort((a, b) => b.year - a.year);
+}
+
+export type Technique = {
+  id: string;
+  kind: "technique" | "segula";
+  title: string;
+  text: string;
+  /** the words of the source, always in the original Hebrew */
+  quote: string;
+  source: string;
+};
+
+export function getTechniques(lang: Lang): Technique[] {
+  return (techniquesJson as {
+    id: string;
+    kind: "technique" | "segula";
+    title: L10n;
+    text: L10n;
+    quote: string;
+    source: L10n;
+  }[]).map((x) => ({
+    id: x.id,
+    kind: x.kind,
+    title: pick(x.title, lang),
+    text: pick(x.text, lang),
+    quote: x.quote,
+    source: pick(x.source, lang),
+  }));
 }
 
 export const allSpeechSlugs = () => speeches.map((s) => s.slug);

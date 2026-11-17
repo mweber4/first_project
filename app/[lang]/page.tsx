@@ -129,7 +129,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           <div className="flex items-start gap-5">
             <span
               aria-hidden="true"
-              className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full border border-ink/40 sm:flex"
+              className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full bg-gold text-paper sm:flex"
             >
               <PhoneCall className="h-7 w-7" />
             </span>
@@ -142,7 +142,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
           </div>
           <Link
             href={`/${lang}/calls`}
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-opacity hover:opacity-90"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-colors hover:bg-paper hover:text-ink"
           >
             {t.callsHomeCta}
           </Link>

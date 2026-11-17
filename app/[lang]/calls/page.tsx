@@ -32,7 +32,7 @@ export default async function CallsPage({ params }: { params: Promise<{ lang: st
       <div className="mx-auto max-w-5xl px-4 py-10">
         <ol className="grid gap-4 md:grid-cols-3">
           {steps.map(([title, text], i) => (
-            <li key={title} className="flex gap-4 rounded-lg border border-line p-5">
+            <li key={title} className="flex gap-4 rounded-lg border border-line border-t-4 border-t-tekhelet bg-card p-5">
               <span aria-hidden="true" className="font-display text-6xl font-bold leading-[0.8] text-gold">
                 {i + 1}
               </span>
@@ -46,14 +46,14 @@ export default async function CallsPage({ params }: { params: Promise<{ lang: st
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[3fr_2fr]">
           <CallScheduler t={t} speakers={speakers} topics={topics} preview={site.showDemoBanner} />
-          <aside className="h-fit rounded-2xl bg-night p-6">
+          <aside className="h-fit rounded-xl border-t-4 border-gold bg-card p-6">
             <h2 className="font-display text-4xl font-bold uppercase leading-none">{t.callsKeysTitle}</h2>
             <ul className="mt-5 space-y-3">
               {keys.map(([key, label]) => (
                 <li key={key} className="flex items-center gap-4">
                   <span
                     aria-hidden="true"
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-card text-xl font-bold text-gold"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-tekhelet text-xl font-bold text-ink"
                   >
                     {key}
                   </span>

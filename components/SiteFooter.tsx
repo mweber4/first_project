@@ -8,6 +8,8 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/speeches", label: t.navSpeeches },
     { href: "/lecturers", label: t.navLecturers },
     { href: "/resources", label: t.navResources },
+    { href: "/techniques", label: t.navTechniques },
+    { href: "/calls", label: t.navCalls },
     { href: "/search", label: t.searchTitle },
     { href: "/donate", label: t.navDonate },
   ];

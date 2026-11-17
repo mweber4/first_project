@@ -74,8 +74,8 @@ export function CallScheduler({
       [t.callsPhone, <span key="p" dir="ltr">{`${code} ${phone}`}</span>],
     ] as const;
     return (
-      <div role="status" className="rounded-lg border border-gold bg-card p-5 md:p-7">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-paper">
+      <div role="status" className="rounded-lg border border-line border-t-4 border-t-gold bg-card p-5 md:p-7">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-tekhelet text-ink">
           <Check className="h-6 w-6" aria-hidden="true" />
         </span>
         <h2 className="mt-4 font-display text-5xl font-bold uppercase leading-none">{t.callsDoneTitle}</h2>
@@ -101,7 +101,7 @@ export function CallScheduler({
   }
 
   return (
-    <form onSubmit={submit} noValidate className="rounded-lg border border-line bg-card p-5 md:p-7">
+    <form onSubmit={submit} noValidate className="rounded-lg border border-line border-t-4 border-t-gold bg-card p-5 md:p-7">
       <h2 className="font-display text-5xl font-bold uppercase leading-none">{t.callsFormTitle}</h2>
 
       <label className="mt-6 block">
@@ -217,7 +217,7 @@ export function CallScheduler({
 
       <button
         type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-opacity hover:opacity-90"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-lg font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink"
       >
         <PhoneCall className="h-5 w-5" aria-hidden="true" />
         {t.callsSubmit}
