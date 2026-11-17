@@ -45,7 +45,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                       href={`/${lang}/lecturers/${l.slug}`}
                       className="flex items-center gap-3 rounded-md px-2 py-2 text-ink-soft transition-colors hover:bg-sand hover:text-ink"
                     >
-                      <Avatar initials={l.initials} size="sm" />
+                      <Avatar initials={l.initials} photo={l.photo} size="sm" />
                       <span className="truncate">{l.name}</span>
                     </Link>
                   </li>

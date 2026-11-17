@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CalendarDays, Clock, Headphones, MapPin, Play, Video as VideoIcon } from "lucide-react";
 import type { Lecturer, Speech, Video } from "@/lib/data";
 import type { Dict, Lang } from "@/lib/i18n";
@@ -38,9 +39,29 @@ export function SectionTitle({
   );
 }
 
-const avatarSizes = { sm: "h-8 w-8 text-xs", md: "h-14 w-14 text-lg", lg: "h-24 w-24 text-3xl" };
+const avatarSizes = { sm: "h-8 w-8 text-xs", md: "h-14 w-14 text-lg", lg: "h-28 w-28 text-3xl" };
+const avatarPixels = { sm: 32, md: 56, lg: 112 };
 
-export function Avatar({ initials, size = "md" }: { initials: string; size?: keyof typeof avatarSizes }) {
+export function Avatar({
+  initials,
+  photo,
+  size = "md",
+}: {
+  initials: string;
+  photo?: string;
+  size?: keyof typeof avatarSizes;
+}) {
+  if (photo) {
+    return (
+      <Image
+        src={photo}
+        alt=""
+        width={avatarPixels[size]}
+        height={avatarPixels[size]}
+        className={`shrink-0 rounded-full object-cover ring-2 ring-gold/60 ${avatarSizes[size]}`}
+      />
+    );
+  }
   return (
     <span
       aria-hidden="true"
@@ -107,7 +128,7 @@ export function LecturerCard({ lecturer: l, lang, t }: { lecturer: Lecturer; lan
       href={`/${lang}/lecturers/${l.slug}`}
       className="group flex items-center gap-4 rounded-lg border border-line bg-card p-4 transition-colors hover:border-gold"
     >
-      <Avatar initials={l.initials} />
+      <Avatar initials={l.initials} photo={l.photo} />
       <span className="min-w-0">
         <span className="block font-serif text-lg font-bold leading-tight decoration-gold-soft decoration-4 underline-offset-2 group-hover:underline">{l.name}</span>
         <span className="mt-1 flex flex-wrap items-center gap-x-2 text-sm text-muted">

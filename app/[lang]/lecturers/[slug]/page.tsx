@@ -30,7 +30,7 @@ export default async function LecturerPage({ params }: { params: Params }) {
             <span aria-hidden="true" className="inline-block ltr:rotate-180">→</span> {t.backToLecturers}
           </Link>
           <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
-            <Avatar initials={l.initials} size="lg" />
+            <Avatar initials={l.initials} photo={l.photo} size="lg" />
             <div>
               <h1 className="font-serif text-3xl font-bold md:text-4xl">{l.name}</h1>
               <p className="text-muted" dir="auto">
