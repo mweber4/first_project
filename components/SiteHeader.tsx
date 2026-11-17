@@ -19,6 +19,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
     { href: "/speeches", label: t.navSpeeches },
     { href: "/lecturers", label: t.navLecturers },
     { href: "/resources", label: t.navResources },
+    { href: "/calls", label: t.navCalls },
   ];
   const isActive = (href: string) =>
     href === "" ? rest === "" : rest.startsWith(href);
