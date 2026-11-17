@@ -60,6 +60,7 @@ export type Lecturer = {
   name: string;
   altName: string;
   initials: string;
+  photo: string;
   role: string;
   location: string;
   bio: string;
@@ -131,6 +132,7 @@ export function getLecturers(lang: Lang): Lecturer[] {
         name,
         altName: lang === "en" ? l.name.he : l.name.en,
         initials: initialsOf(name),
+        photo: `/images/speakers/${l.slug}.png`,
         role: pick(l.role, lang),
         location: pick(l.location, lang),
         bio: pick(l.bio, lang),

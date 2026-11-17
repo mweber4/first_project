@@ -94,7 +94,7 @@ export default async function SpeechPage({ params }: { params: Params }) {
         </div>
 
         <section className="flex gap-5 rounded-lg border border-line bg-card p-5">
-          <Avatar initials={lecturer.initials} />
+          <Avatar initials={lecturer.initials} photo={lecturer.photo} />
           <div>
             <h2 className="text-sm font-semibold text-muted">{t.aboutLecturer}</h2>
             <p className="font-serif text-xl font-bold">
