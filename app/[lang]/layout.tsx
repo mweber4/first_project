@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Sans_Hebrew, Karantina } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { MobileTabBar } from "@/components/MobileTabBar";
+import { InstallPrompt } from "@/components/InstallPrompt";
+import { ServiceWorker } from "@/components/ServiceWorker";
 import { site } from "@/lib/data";
 import { dirOf, getDict, isLang, locales } from "@/lib/i18n";
 
@@ -32,8 +35,23 @@ export async function generateMetadata({
   return {
     title: { default: `${t.siteName} — ${t.tagline}`, template: `%s · ${t.siteName}` },
     description: t.heroText,
+    applicationName: t.siteName,
+    appleWebApp: { capable: true, title: t.siteName, statusBarStyle: "black-translucent" },
+    formatDetection: { telephone: false },
+    icons: {
+      icon: [{ url: "/icons/favicon-32.png", sizes: "32x32" }, { url: "/icons/icon-192.png", sizes: "192x192" }],
+      apple: "/icons/apple-touch-icon.png",
+    },
   };
 }
+
+export const viewport: Viewport = {
+  themeColor: "#0c1530",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export default async function LangLayout({
   children,
@@ -48,7 +66,7 @@ export default async function LangLayout({
 
   return (
     <html lang={lang} dir={dirOf(lang)} className={`${plex.variable} ${karantina.variable} bg-paper [color-scheme:dark]`}>
-      <body className="flex min-h-screen flex-col font-sans antialiased">
+      <body className="flex min-h-dvh flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] font-sans antialiased xl:pb-0">
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-card focus:px-3 focus:py-2"
@@ -65,6 +83,9 @@ export default async function LangLayout({
           {children}
         </main>
         <SiteFooter lang={lang} t={t} />
+        <MobileTabBar lang={lang} t={t} />
+        <InstallPrompt t={t} />
+        <ServiceWorker />
       </body>
     </html>
   );

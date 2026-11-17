@@ -151,6 +151,18 @@ const he = {
   sourceLabel: "מקור",
   techniquesNote: "לשאלות למעשה יש לפנות לרב או למורה הוראה.",
 
+  tabResources: "חיזוק",
+  installTitle: "התקינו את האפליקציה",
+  installText: "גישה מהירה לשיעורים ישר ממסך הבית.",
+  tabTechniques: "עצות",
+  tabCalls: "בטלפון",
+  tabMore: "עוד",
+  installButton: "התקנה",
+  installDismiss: "לא עכשיו",
+  installIosStep1: "הקישו על",
+  installIosStep2: "ואז",
+  installIosAction: "הוספה למסך הבית",
+
   navCalls: "שיעור בטלפון",
   callsTitle: "שיעור בטלפון, בשעה שנוחה לכם",
   callsIntro:
@@ -338,6 +350,18 @@ const yi: Dict = {
   sourceLabel: "מקור",
   techniquesNote: "מיט שאלות למעשה זאָל מען זיך ווענדן צו אַ רב אָדער מורה הוראה.",
 
+  tabResources: "חיזוק",
+  installTitle: "אינסטאַלירט די אַפּ",
+  installText: "שנעלער צוטריט צו די שיעורים גלייך פון היים־עקראַן.",
+  tabTechniques: "עצות",
+  tabCalls: "טעלעפאָן",
+  tabMore: "מער",
+  installButton: "אינסטאַלירן",
+  installDismiss: "נישט יעצט",
+  installIosStep1: "דריקט אויף",
+  installIosStep2: "און דערנאָך",
+  installIosAction: "צולייגן צום היים־עקראַן",
+
   navCalls: "שיעור אויפן טעלעפאָן",
   callsTitle: "אַ שיעור אויפן טעלעפאָן, ווען עס פּאַסט אייך",
   callsIntro:
@@ -522,6 +546,18 @@ const en: Dict = {
   segulosGroup: "Segulos and tefillos",
   sourceLabel: "Source",
   techniquesNote: "For practical questions, speak to a rav.",
+
+  tabResources: "Chizuk",
+  installTitle: "Install the app",
+  installText: "Open the shiurim straight from your home screen.",
+  tabTechniques: "Eitzos",
+  tabCalls: "By phone",
+  tabMore: "More",
+  installButton: "Install",
+  installDismiss: "Not now",
+  installIosStep1: "Tap",
+  installIosStep2: "then",
+  installIosAction: "Add to Home Screen",
 
   navCalls: "By phone",
   callsTitle: "A shiur by phone, on your schedule",

@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { Heart, Menu, Search, X } from "lucide-react";
+import { Check, ChevronDown, Heart, Languages, Search } from "lucide-react";
 import { Logo } from "./Logo";
 import { localeNames, locales, type Dict, type Lang } from "@/lib/i18n";
+
+/** Two-letter labels for the compact language switch on narrow screens. */
+const shortNames: Record<Lang, string> = { he: "עב", yi: "אי", en: "EN" };
 
 export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const [q, setQ] = useState("");
 
   const rest = pathname.replace(/^\/[^/]+/, "");
@@ -28,52 +31,15 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!q.trim()) return;
-    setOpen(false);
     router.push(`/${lang}/search?q=${encodeURIComponent(q.trim())}`);
   };
 
-  const langSwitch = (
-    <div className="flex items-center gap-1 text-sm" role="group" aria-label={t.language}>
-      {locales.map((l) => (
-        <Link
-          key={l}
-          href={`/${l}${rest}`}
-          hrefLang={l}
-          lang={l}
-          aria-current={l === lang ? "true" : undefined}
-          className={`rounded-lg px-2.5 py-1 transition-colors ${
-            l === lang ? "font-semibold text-ink" : "text-muted hover:text-ink"
-          }`}
-        >
-          {localeNames[l]}
-        </Link>
-      ))}
-    </div>
-  );
-
-  const searchForm = (
-    <form onSubmit={submit} role="search" className="relative w-full">
-      <Search
-        className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
-        aria-hidden="true"
-      />
-      <input
-        type="search"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        placeholder={t.searchPlaceholder}
-        aria-label={t.searchButton}
-        className="w-full rounded-lg border border-line bg-card py-2 ps-9 pe-4 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
-      />
-    </form>
-  );
-
   return (
-    <header className="sticky top-0 z-40 border-t-2 border-tekhelet bg-paper/90 text-ink backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
-        <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2.5">
-          <Logo />
-          <span className="font-serif text-xl font-bold leading-none">{t.siteName}</span>
+    <header className="sticky top-0 z-40 border-b border-t-2 border-b-line border-t-tekhelet bg-paper/90 pt-[env(safe-area-inset-top)] text-ink backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-2 ps-[max(1rem,env(safe-area-inset-left))] pe-[max(1rem,env(safe-area-inset-right))] sm:gap-4">
+        <Link href={`/${lang}`} className="flex min-w-0 shrink items-center gap-2.5">
+          <Logo className="h-9 w-9 shrink-0" />
+          <span className="truncate text-lg font-bold leading-none sm:text-xl">{t.siteName}</span>
         </Link>
 
         <nav className="ms-4 hidden items-center gap-1 xl:flex" aria-label={t.menu}>
@@ -91,51 +57,93 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           ))}
         </nav>
 
-        <div className="ms-auto hidden min-w-0 max-w-48 flex-1 xl:block">{searchForm}</div>
-        <div className="hidden xl:block">{langSwitch}</div>
+        <div className="ms-auto hidden min-w-0 max-w-48 flex-1 xl:block">
+          <form onSubmit={submit} role="search" className="relative w-full">
+            <Search
+              className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+              aria-hidden="true"
+            />
+            <input
+              type="search"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder={t.searchPlaceholder}
+              aria-label={t.searchButton}
+              className="w-full rounded-lg border border-line bg-card py-2 ps-9 pe-4 text-sm text-ink placeholder:text-muted focus:border-gold focus:outline-none"
+            />
+          </form>
+        </div>
+
+        {/* Desktop: the three languages inline. */}
+        <div className="hidden items-center gap-1 text-sm xl:flex" role="group" aria-label={t.language}>
+          {locales.map((l) => (
+            <Link
+              key={l}
+              href={`/${l}${rest}`}
+              hrefLang={l}
+              lang={l}
+              aria-current={l === lang ? "true" : undefined}
+              className={`px-2.5 py-1 transition-colors ${
+                l === lang ? "font-semibold text-ink" : "text-muted hover:text-ink"
+              }`}
+            >
+              {localeNames[l]}
+            </Link>
+          ))}
+        </div>
+
+        {/* Phones and tablets: one compact button in the header row. */}
+        <div className="relative ms-auto shrink-0 xl:hidden">
+          <button
+            type="button"
+            onClick={() => setLangOpen((v) => !v)}
+            aria-expanded={langOpen}
+            aria-controls="lang-menu"
+            aria-label={`${t.language}: ${localeNames[lang]}`}
+            className="flex h-11 items-center gap-1.5 rounded-sm border border-gold/60 px-2.5 text-sm font-semibold text-ink transition-colors hover:border-gold"
+          >
+            <Languages className="h-4 w-4 text-gold" aria-hidden="true" />
+            <span className="sm:hidden">{shortNames[lang]}</span>
+            <span className="hidden sm:inline">{localeNames[lang]}</span>
+            <ChevronDown
+              className={`hidden h-4 w-4 text-muted transition-transform sm:block ${langOpen ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            />
+          </button>
+          {langOpen && (
+            <ul
+              id="lang-menu"
+              className="absolute end-0 top-full z-50 mt-2 w-44 rounded-sm border border-line bg-night py-1 shadow-2xl shadow-night/60"
+            >
+              {locales.map((l) => (
+                <li key={l}>
+                  <Link
+                    href={`/${l}${rest}`}
+                    hrefLang={l}
+                    lang={l}
+                    onClick={() => setLangOpen(false)}
+                    aria-current={l === lang ? "true" : undefined}
+                    className={`flex h-12 items-center justify-between gap-3 px-4 text-base ${
+                      l === lang ? "font-semibold text-gold" : "text-ink hover:bg-sand"
+                    }`}
+                  >
+                    {localeNames[l]}
+                    {l === lang && <Check className="h-4 w-4" aria-hidden="true" />}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         <Link
           href={`/${lang}/donate`}
-          className="btn btn-primary ms-auto shrink-0 !px-4 !py-2 !text-sm xl:ms-0"
+          className="btn btn-primary h-11 shrink-0 !px-3.5 !py-0 !text-sm sm:!px-4 xl:h-auto xl:!py-2"
         >
-          <Heart className="h-4 w-4" aria-hidden="true" />
+          <Heart className="hidden h-4 w-4 sm:block" aria-hidden="true" />
           {t.donateCta}
         </Link>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={t.menu}
-          className="rounded-lg p-2 hover:bg-sand xl:hidden"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </div>
-      <div aria-hidden="true" className="brand-stripe" />
-
-      {open && (
-        <div id="mobile-menu" className="border-t border-line bg-paper px-4 pb-5 pt-4 xl:hidden">
-          {searchForm}
-          <nav className="mt-3 flex flex-col" aria-label={t.menu}>
-            {nav.map((n) => (
-              <Link
-                key={n.href}
-                href={`/${lang}${n.href}`}
-                onClick={() => setOpen(false)}
-                aria-current={isActive(n.href) ? "page" : undefined}
-                className={`rounded-lg px-2 py-3 text-lg ${
-                  isActive(n.href) ? "mark font-semibold" : "text-ink/85"
-                }`}
-              >
-                {n.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="mt-3 border-t border-line pt-4">{langSwitch}</div>
-        </div>
-      )}
     </header>
   );
 }
