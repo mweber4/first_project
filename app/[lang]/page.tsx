@@ -43,7 +43,13 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
               <div className="flex items-center justify-between gap-4 border-t border-ink/15 pt-5">
                 <div className="min-w-0">
                   <h2 className="text-pretty font-serif text-xl font-medium" dir="auto">{featured.title}</h2>
-                  <p className="mt-2 text-xs leading-relaxed text-muted">{featured.lecturerName} · {featured.languageLabel} · {featured.minutes} {t.minutes}</p>
+                  <p className="mt-2 flex flex-wrap gap-x-2 text-xs leading-relaxed text-muted">
+                    <span>{featured.lecturerName}</span>
+                    <span aria-hidden="true">·</span>
+                    <bdi>{featured.minutes} {t.minutes}</bdi>
+                    <span aria-hidden="true">·</span>
+                    <bdi>{featured.languageLabel}</bdi>
+                  </p>
                 </div>
                 <Link href={`/${lang}/speeches/${featured.slug}`} aria-label={`${t.listen}: ${featured.title}`} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-ink/30 transition-colors hover:bg-ink hover:text-snow">
                   <Play className="ms-0.5 h-4 w-4 fill-current" aria-hidden="true" />
