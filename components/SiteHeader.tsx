@@ -69,7 +69,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur text-ink">
+    <header className="sticky top-0 z-40 bg-paper/90 backdrop-blur text-ink">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
         <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2.5">
           <Logo />
@@ -96,7 +96,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
 
         <Link
           href={`/${lang}/donate`}
-          className="ms-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-sm font-bold text-paper transition-colors hover:bg-night lg:ms-0"
+          className="ms-auto inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-5 py-2 text-sm font-bold text-paper transition-colors hover:bg-tekhelet hover:text-ink lg:ms-0"
         >
           <Heart className="h-4 w-4" aria-hidden="true" />
           {t.donateCta}
@@ -113,6 +113,7 @@ export function SiteHeader({ lang, t }: { lang: Lang; t: Dict }) {
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
+      <div aria-hidden="true" className="brand-stripe" />
 
       {open && (
         <div id="mobile-menu" className="border-t border-line bg-paper px-4 pb-5 pt-4 lg:hidden">

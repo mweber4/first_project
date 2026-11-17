@@ -6,10 +6,13 @@ import type { Dict, Lang } from "@/lib/i18n";
 
 export function PageHeader({ title, intro }: { title: string; intro?: string }) {
   return (
-    <div className="border-b border-line">
-      <div className="mx-auto max-w-6xl px-4 pb-8 pt-12">
-        <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">{title}</h1>
-        {intro && <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-muted">{intro}</p>}
+    <div className="bg-tekhelet text-ink">
+      <div className="mx-auto max-w-6xl px-4 pb-10 pt-12">
+        <h1 className="flex items-center gap-4 text-balance font-display text-6xl font-bold uppercase leading-none md:text-7xl">
+          <span aria-hidden="true" className="h-10 w-2 rounded-full bg-gold md:h-12" />
+          {title}
+        </h1>
+        {intro && <p className="mt-4 max-w-2xl text-pretty text-lg leading-relaxed text-ink/90">{intro}</p>}
       </div>
     </div>
   );
@@ -25,9 +28,12 @@ export function SectionTitle({
   linkLabel?: string;
 }) {
   return (
-    <div className="mb-6 flex items-end justify-between gap-4 border-b border-line pb-3">
+    <div className="mb-6 flex items-end justify-between gap-4 border-b-2 border-tekhelet pb-3">
       <h2 className="flex items-center gap-3 text-balance font-display text-4xl font-bold uppercase leading-none md:text-5xl">
-        <span aria-hidden="true" className="h-6 w-1.5 rounded-full bg-gold" />
+        <span aria-hidden="true" className="flex gap-1">
+          <span className="h-7 w-1.5 rounded-full bg-tekhelet" />
+          <span className="h-7 w-1.5 rounded-full bg-gold" />
+        </span>
         {title}
       </h2>
       {href && (
@@ -76,7 +82,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
   const Icon = s.type === "video" ? VideoIcon : Headphones;
   return (
     <article className="group relative flex gap-4 border-b border-line py-5 transition-colors hover:bg-sand/60">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gold-soft text-gold transition-colors group-hover:bg-gold group-hover:text-paper">
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-tekhelet text-ink transition-colors group-hover:bg-gold group-hover:text-paper">
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
       <div className="min-w-0 flex-1">
@@ -107,7 +113,7 @@ export function SpeechCard({ speech: s, lang, t }: { speech: Speech; lang: Lang;
             <Clock className="h-3.5 w-3.5" aria-hidden="true" />
             {s.minutes} {t.minutes}
           </span>
-          <span className="rounded-full bg-sand px-2 py-0.5 text-xs font-medium text-ink-soft">
+          <span className="rounded-full bg-gold px-2 py-0.5 text-xs font-bold text-paper">
             {s.languageLabel}
           </span>
           {s.topics.map((tp) => (
@@ -126,7 +132,7 @@ export function LecturerCard({ lecturer: l, lang, t }: { lecturer: Lecturer; lan
   return (
     <Link
       href={`/${lang}/lecturers/${l.slug}`}
-      className="group flex items-center gap-4 rounded-lg border border-line bg-card p-4 transition-colors hover:border-gold"
+      className="group flex items-center gap-4 rounded-lg border border-line border-t-4 border-t-tekhelet bg-card p-4 transition-colors hover:border-gold hover:border-t-gold"
     >
       <Avatar initials={l.initials} photo={l.photo} />
       <span className="min-w-0">
@@ -152,29 +158,38 @@ export function VideoTile({
   t,
   onPlay,
   href,
+  tone = "red",
 }: {
   video: Video;
   t: Dict;
   onPlay?: () => void;
   href?: string;
+  tone?: "red" | "yellow";
 }) {
+  const yellow = tone === "yellow";
   const poster = (
     <span
-      className="relative flex aspect-video flex-col justify-between overflow-hidden rounded-lg border border-transparent bg-tekhelet p-4 transition-colors group-hover:border-gold"
+      className={`relative flex aspect-video flex-col justify-between overflow-hidden rounded-lg border-2 border-transparent p-4 transition-colors ${
+        yellow ? "bg-gold text-paper group-hover:border-tekhelet" : "bg-tekhelet text-ink group-hover:border-gold"
+      }`}
       style={v.poster ? { backgroundImage: `url(${v.poster})`, backgroundSize: "cover" } : undefined}
     >
       <span className="flex items-center justify-between gap-2">
-        <span className="eyebrow truncate">{v.campaign ?? v.year}</span>
+        <span className={`eyebrow truncate ${yellow ? "!text-tekhelet" : ""}`}>{v.campaign ?? v.year}</span>
         <span className="shrink-0 rounded bg-night/70 px-1.5 py-0.5 text-xs text-snow">
           {v.minutes} {t.minutes}
         </span>
       </span>
       {!v.poster && (
-        <span className="line-clamp-2 text-start font-display text-4xl font-bold uppercase leading-[0.9] text-ink md:text-5xl">
+        <span className="line-clamp-2 text-start font-display text-4xl font-bold uppercase leading-[0.9] md:text-5xl">
           {v.title}
         </span>
       )}
-      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-gold text-paper transition-transform group-hover:scale-110">
+      <span
+        className={`flex h-11 w-11 items-center justify-center rounded-full transition-transform group-hover:scale-110 ${
+          yellow ? "bg-tekhelet text-ink" : "bg-gold text-paper"
+        }`}
+      >
         <Play className="ms-0.5 h-5 w-5 fill-current" aria-hidden="true" />
       </span>
     </span>
